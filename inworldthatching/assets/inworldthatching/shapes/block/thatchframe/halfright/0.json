@@ -1,0 +1,60 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/origin/slanted up",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"frame": "block/wood/oak"
+	},
+	"elements": [
+		{
+			"name": "beam-vertical-left",
+			"from": [ 2.0, 0.0, 12.0 ],
+			"to": [ 3.0, 24.0, 13.0 ],
+			"rotationOrigin": [ 2.0, 0.0, 12.0 ],
+			"rotationZ": -45.0,
+			"faces": {
+				"north": { "texture": "#frame", "uv": [ 3.0, 0.0, 2.0, 16.0 ], "autoUv": false, "snapUv": false },
+				"east": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 16.0 ], "autoUv": false, "snapUv": false },
+				"south": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 16.0 ], "autoUv": false, "snapUv": false },
+				"west": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 16.0 ], "autoUv": false, "snapUv": false },
+				"up": { "texture": "#frame", "uv": [ 0.0, 14.0, 2.0, 16.0 ], "autoUv": false, "snapUv": false },
+				"down": { "texture": "#frame", "uv": [ 0.0, 16.0, 2.0, 14.0 ], "autoUv": false, "snapUv": false }
+			},
+			"children": [
+				{
+					"name": "beam-horizontal-bottom",
+					"from": [ -0.7071, 4.9497, -4.0 ],
+					"to": [ 0.2929, 5.9497, 4.0 ],
+					"rotationOrigin": [ -0.7071, 4.9497, -4.0 ],
+					"faces": {
+						"north": { "texture": "#frame", "uv": [ 0.0, 14.0, 2.0, 16.0 ], "autoUv": false, "snapUv": false },
+						"east": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+						"south": { "texture": "#frame", "uv": [ 0.0, 14.0, 2.0, 16.0 ], "autoUv": false },
+						"west": { "texture": "#frame", "uv": [ 0.0, 0.0, 8.0, 1.0 ] },
+						"up": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 8.0 ] },
+						"down": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 8.0 ] }
+					}
+				},
+				{
+					"name": "beam-horizontal-top",
+					"from": [ -0.7071, 14.8492, -4.0 ],
+					"to": [ 0.2929, 15.8492, 4.0 ],
+					"rotationOrigin": [ -0.7071, 14.8492, -4.0 ],
+					"faces": {
+						"north": { "texture": "#frame", "uv": [ 0.0, 14.0, 2.0, 16.0 ], "autoUv": false, "snapUv": false },
+						"east": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+						"south": { "texture": "#frame", "uv": [ 0.0, 14.0, 2.0, 16.0 ], "autoUv": false },
+						"west": { "texture": "#frame", "uv": [ 0.0, 0.0, 8.0, 1.0 ] },
+						"up": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 8.0 ] },
+						"down": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 8.0 ] }
+					}
+				}
+			]
+		}
+	]}

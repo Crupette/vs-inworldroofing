@@ -1,0 +1,44 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/origin/slanted up",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+	},
+	"elements": [
+		{
+			"name": "beam-1",
+			"from": [ 2.5, 0.1, 2.0 ],
+			"to": [ 19.5, 1.1, 3.0 ],
+			"rotationOrigin": [ 2.5, 0.1, 2.0 ],
+			"rotationY": -45.0,
+			"faces": {
+				"north": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+				"east": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 1.0 ], "snapUv": false },
+				"south": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+				"west": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 1.0 ], "snapUv": false },
+				"up": { "texture": "#frame", "uv": [ 0.0, 14.0, 16.0, 15.0 ], "autoUv": false, "snapUv": false },
+				"down": { "texture": "#frame", "uv": [ 0.0, 15.0, 16.0, 16.0 ], "autoUv": false, "snapUv": false }
+			}
+		},
+		{
+			"name": "beam-2",
+			"from": [ 1.5, 0.0, 14.0 ],
+			"to": [ 18.5, 1.0, 15.0 ],
+			"rotationOrigin": [ 1.5, 0.0, 14.0 ],
+			"rotationY": 45.0,
+			"faces": {
+				"north": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+				"east": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 1.0 ], "snapUv": false },
+				"south": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 1.0 ], "autoUv": false, "snapUv": false },
+				"west": { "texture": "#frame", "uv": [ 2.0, 0.0, 3.0, 1.0 ], "snapUv": false },
+				"up": { "texture": "#frame", "uv": [ 0.0, 14.0, 16.0, 15.0 ], "autoUv": false, "snapUv": false },
+				"down": { "texture": "#frame", "uv": [ 0.0, 15.0, 16.0, 16.0 ], "autoUv": false, "snapUv": false }
+			}
+		}
+	]}

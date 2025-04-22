@@ -1,0 +1,228 @@
+{
+    "code": "thatchwork",
+    "class": "InWorldThatching.BlockThatchWork",
+    "variantgroups": [
+        { "code": "shape", "states": [
+            "straight", "bottom", "cornerinner", "cornerouter", 
+            "halfleft", "halfright", 
+            "ridgeend", "ridgehalfleft", "ridgehalfright",
+            "top",
+            "ridge"
+        ]},
+        { "code": "material", "states": [ "thatch" ]},
+        { "loadFromProperties": "game:abstract/horizontalorientation" },
+        { "code": "stage", "states": [ "1", "2", "3" ]}
+    ],
+    "skipVariants": [
+        "*-bottom-*-2",
+        "*-bottom-*-3",
+
+        "*-cornerouter-*-3",
+
+        "*-halfleft-*-2",
+        "*-halfleft-*-3",
+
+        "*-halfright-*-2",
+        "*-halfright-*-3",
+
+        "*-ridgeend-*-2",
+        "*-ridgeend-*-3",
+
+        "*-ridgehalfleft-*-2",
+        "*-ridgehalfleft-*-3",
+
+        "*-ridgehalfright-*-2",
+        "*-ridgehalfright-*-3",
+
+        "*-top-*-3",
+
+        "*-ridge-south-*",
+        "*-ridge-west-*",
+        "*-ridge-*-3"
+    ],
+    "attributes": {
+        "upgradeMaterialByType": {
+            "*-thatch-*": ["game:thatch", "game:drygrass"]
+        },
+        "nextStageByType": {
+            "*-bottom-thatch-*-1": "game:slantedroofingbottom-{material}-{horizontalorientation}-free",
+            "*-halfleft-thatch-*-1": "game:slantedroofinghalfleft-{material}-{horizontalorientation}-free",
+            "*-halfright-thatch-*-1": "game:slantedroofinghalfright-{material}-{horizontalorientation}-free",
+            "*-ridgeend-thatch-*-1": "game:slantedroofingridgeend-{material}-{horizontalorientation}-free",
+            "*-ridgehalfleft-thatch-*-1": "game:slantedroofingridgehalfleft-{material}-{horizontalorientation}-free",
+            "*-ridgehalfright-thatch-*-1": "game:slantedroofingridgehalfright-{material}-{horizontalorientation}-free",
+            "*-thatch-*-1": "thatchwork-{shape}-{material}-{horizontalorientation}-2",
+
+            "*-cornerouter-thatch-*-2": "game:slantedroofingcornerouter-{material}-{horizontalorientation}-free",
+            "*-top-thatch-*-2": "game:slantedroofingtop-{material}-{horizontalorientation}-free",
+            "*-ridge-thatch-north-2": "game:slantedroofingridge-{material}-we-free",
+            "*-ridge-thatch-east-2": "game:slantedroofingridge-{material}-ns-free",
+            "*-thatch-*-2": "thatchwork-{shape}-{material}-{horizontalorientation}-3",
+
+            "*-straight-thatch-*-3": "game:slantedroofing-{material}-{horizontalorientation}-free",
+            "*-cornerinner-thatch-*-3": "game:slantedroofingcornerinner-{material}-{horizontalorientation}-free"
+        }
+    },
+    "dropsByType": {
+        "*-straight-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 4, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-straight-thatch-*-2": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 4, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0 } }
+        ],
+        "*-straight-thatch-*-3": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 4, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 3, "var": 0 } }
+        ],
+        "*-bottom-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-cornerinner-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-cornerinner-thatch-*-2": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0 } }
+        ],
+        "*-cornerinner-thatch-*-3": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 3, "var": 0 } }
+        ],
+        "*-cornerouter-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-cornerouter-thatch-*-2": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0 } }
+        ],
+        "*-halfleft-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-halfright-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-ridgeend-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-ridgehalfleft-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-ridgehalfright-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 2, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-top-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-top-thatch-*-2": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0 } }
+        ],
+        "*-ridge-thatch-*-1": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 1, "var": 0 } }
+        ],
+        "*-ridge-thatch-*-2": [
+            { "type": "item", "code": "game:stick", "quantity": { "avg": 3, "var": 0 } },
+            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0 } }
+        ]
+	},
+    "shapeByType": {
+        "*-north-*": {"base": "block/thatchframe/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/thatchframe/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/thatchframe/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/thatchframe/{shape}/{stage}", "rotateY": 0 }
+    },
+    "texturesByType": {
+        "*-thatch-*": {
+            "frame": { "base": "game:block/wood/oak"},
+            "base-side": { "base": "game:block/hay/bamboo-side"},
+            "material-side": { "base": "game:block/hay/normal-side"},
+            "material-top": { "base": "game:block/hay/normal-top"},
+            "straw1": { "base": "game:block/plant/grassroofing/straw1"}
+        }
+    },
+    "soundsByType": {
+        "*-thatch-*": {
+			"place": "game:block/plant",
+			"break": "game:block/plant",
+			"hit": "game:block/plant"
+		}
+    },
+    "creativeinventory": { "general": [""], "decorative": [""] },
+    "resistance": 2,
+
+    "collisionSelectionBoxesByType": {
+		"*-straight-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-straight-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-straight-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-straight-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-bottom-*-north-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 90 }],
+		"*-bottom-*-west-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 180 }],
+		"*-bottom-*-south-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 270 }],
+		"*-bottom-*-east-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1 }],
+
+        "*-cornerinner-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerinner-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerinner-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerinner-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-cornerouter-*-north-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerouter-*-west-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerouter-*-south-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerouter-*-east-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-halfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 90 } ],
+		"*-halfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 180 } ],
+		"*-halfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 270 } ],
+		"*-halfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5 } ],
+
+        "*-halfright-*-north-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-halfright-*-west-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-halfright-*-south-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-halfright-*-east-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-ridge-*-north-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-*-east-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+
+        "*-ridgeend-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
+		"*-ridgeend-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
+		"*-ridgeend-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 270 }],
+		"*-ridgeend-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5 }],
+
+        "*-ridgehalfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1 }],
+
+        "*-ridgehalfright-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfright-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfright-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfright-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 }],
+
+        "*-top-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 90 }],
+		"*-top-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 180 }],
+		"*-top-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 270 }],
+		"*-top-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, }],
+
+        "*-tip-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 } ]
+	},
+
+    "blockmaterial": "Plant",
+	"lightAbsorption": 0,
+	"faceCullMode": "NeverCull",
+    "renderpass": "OpaqueNoCull",
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false }
+}

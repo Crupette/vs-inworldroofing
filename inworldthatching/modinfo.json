@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "inworldthatching",
+    "name": "In World Thatching",
+    "authors": [
+        "Crupette"
+    ],
+    "description": "Replaces the thatch block crafting recipes with in-world alternatives.",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
+}
