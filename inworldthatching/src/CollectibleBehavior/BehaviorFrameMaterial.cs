@@ -89,12 +89,6 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
             handling = EnumHandling.PreventSubsequent;
             handHandling = EnumHandHandling.PreventDefault;
-
-            BlockPos placePos = blockSel.Position.AddCopy(blockSel.Face);
-            if(!byEntity.World.Claims.TryAccess(player, placePos, EnumBlockAccessFlags.BuildOrBreak)) {
-                slot.MarkDirty();
-                return;
-            }
             
             int selectedId = GetSelectedFrame(slot);
 
@@ -127,10 +121,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public bool PlaceBlockNotOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, BlockThatchFrame selectedFrame)
     {
-        BlockPos placePos = blockSel.Position.AddCopy(blockSel.Face);
-        if(world.BlockAccessor.GetBlock(placePos).Replaceable < 6000) {
-            return false;
-        }
+        BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
 
         CraftingRecipeIngredient cost = selectedFrame.Cost;
         if(slot.Itemstack.StackSize < cost.Quantity) {
@@ -138,13 +129,18 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             return false;
         }
 
-        slot.TakeOut(cost.Quantity);
-        world.BlockAccessor.SetBlock(selectedFrame.Id, placePos);
+        string err = "";
+        if(selectedFrame.TryPlaceBlock(world, player, new ItemStack(selectedFrame), placeSel, ref err)) {
+            slot.TakeOut(cost.Quantity);
+        }else{
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
+            return false;
+        }
 
         if(world.Side == EnumAppSide.Server) {
             world.PlaySoundAt(
                 AssetLocation.Create("sounds/block/loosestick"), 
-                blockSel.Position,
+                placeSel.Position,
                 -0.5);
         }
         return true;
@@ -152,10 +148,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public bool PlaceBlockHOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, Block selectedBlock)
     {
-        BlockPos placePos = blockSel.Position.AddCopy(blockSel.Face);
-        if(world.BlockAccessor.GetBlock(placePos).Replaceable < 6000) {
-            return false;
-        }
+        BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
 
         BlockFacing[] horVer = Block.SuggestedHVOrientation(player, blockSel);
         AssetLocation orientedCode = selectedBlock.CodeWithVariant("horizontalorientation", horVer[0].Code);
@@ -173,13 +166,18 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             return false;
         }
 
-        slot.TakeOut(cost.Quantity);
-        world.BlockAccessor.SetBlock(orientedBlock.Id, placePos);
+        string err = "";
+        if(orientedBlock.TryPlaceBlock(world, player, new ItemStack(orientedBlock), placeSel, ref err)) {
+            slot.TakeOut(cost.Quantity);
+        }else{
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
+            return false;
+        }
 
         if(world.Side == EnumAppSide.Server) {
             world.PlaySoundAt(
                 AssetLocation.Create("sounds/block/loosestick"), 
-                blockSel.Position,
+                placeSel.Position,
                 -0.5);
         }
         return true;
@@ -187,10 +185,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public bool PlaceBlockNWOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, Block selectedBlock)
     {
-        BlockPos placePos = blockSel.Position.AddCopy(blockSel.Face);
-        if(world.BlockAccessor.GetBlock(placePos).Replaceable < 6000) {
-            return false;
-        }
+        BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
 
         BlockFacing[] horVer = Block.SuggestedHVOrientation(player, blockSel);
         string orientCode = "north";
@@ -211,13 +206,18 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             return false;
         }
 
-        slot.TakeOut(cost.Quantity);
-        world.BlockAccessor.SetBlock(orientedBlock.Id, placePos);
+        string err = "";
+        if(orientedBlock.TryPlaceBlock(world, player, new ItemStack(orientedBlock), placeSel, ref err)) {
+            slot.TakeOut(cost.Quantity);
+        }else{
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
+            return false;
+        }
 
         if(world.Side == EnumAppSide.Server) {
             world.PlaySoundAt(
                 AssetLocation.Create("sounds/block/loosestick"), 
-                blockSel.Position,
+                placeSel.Position,
                 -0.5);
         }
         return true;

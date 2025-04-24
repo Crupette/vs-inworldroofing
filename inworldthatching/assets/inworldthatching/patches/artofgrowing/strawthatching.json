@@ -180,7 +180,7 @@
         ],
         "dependsOn": [{"modid": "artofgrowing"}]
     },
-    {   "file": "game:blocktypes/roofing/slantedrooafingtip.json",
+    {   "file": "game:blocktypes/roofing/slantedroofingtip.json",
         "side": "server",
         "path": "/dropsByType/slantedroofingtip-thatch-*",
         "op": "replace",
@@ -389,14 +389,16 @@
         "dependsOn": [{"modid": "artofgrowing"}]
     },
     //tip
-    {   "file": "artofgrowing:blocktypes/roofing/slantedroofing.json",
+    {   "file": "artofgrowing:blocktypes/roofing/slantedroofingtip.json",
         "side": "server",
-        "path": "/drops",
+        "path": "/dropsByType",
         "op": "addmerge",
-        "value": [
-            { "type": "item", "code": "game:stick", "quantity": { "avg": 1, "var": 0}},
-            { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0}}
-        ],
+        "value": {
+            "*-thatch-*": [
+                { "type": "item", "code": "game:stick", "quantity": { "avg": 1, "var": 0}},
+                { "type": "item", "code": "game:thatch", "quantity": { "avg": 2, "var": 0}}
+            ]
+        },
         "dependsOn": [{"modid": "artofgrowing"}]
     }
 ]

@@ -8,8 +8,7 @@
 	"textureSizes": {
 	},
 	"textures": {
-		"base-side": "block/hay/bamboo-side",
-		"frame": "block/wood/oak"
+		"frame": "game:block/wood/oak"
 	},
 	"elements": [
 		{
