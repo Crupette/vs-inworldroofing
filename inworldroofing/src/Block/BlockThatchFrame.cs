@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Vintagestory.API;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
-namespace InWorldThatching;
+namespace InWorldRoofing;
 
 public class BlockThatchFrame : Block
 {
@@ -23,7 +24,7 @@ public class BlockThatchFrame : Block
         base.OnLoaded(api);
 
         Cost = Attributes?["cost"].AsObject<CraftingRecipeIngredient>();
-        RecipeDisplay = AssetLocation.Create(Attributes?["recipeDisplay"]?.AsString(), InWorldThatchingSystem.MODID);
+        RecipeDisplay = AssetLocation.Create(Attributes?["recipeDisplay"]?.AsString(), InWorldRoofingSystem.MODID);
         
         var orientableBehavior = Attributes?["orientableBehavior"]?.AsString();
         switch(orientableBehavior) {
@@ -44,13 +45,13 @@ public class BlockThatchFrame : Block
         NextStage = new();
         foreach(var stage in rawNextStage) {
             NextStage.Add(
-                AssetLocation.Create(stage.Key, InWorldThatchingSystem.MODID),
-                AssetLocation.Create(stage.Value, InWorldThatchingSystem.MODID));
+                AssetLocation.Create(stage.Key, InWorldRoofingSystem.MODID),
+                AssetLocation.Create(stage.Value, InWorldRoofingSystem.MODID));
         }
 
         if(api.Side != EnumAppSide.Client) return;
 
-        interactions = ObjectCacheUtil.GetOrCreate(api, "inworldthatching.thatchFrameBlockInteractions", () => {
+        interactions = ObjectCacheUtil.GetOrCreate(api, "inworldroofing.thatchFrameBlockInteractions", () => {
             List<ItemStack> materialStacks = new();
             foreach(var stage in NextStage) {
                 materialStacks.Add(new(api.World.GetItem(stage.Key)));

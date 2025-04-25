@@ -1,13 +1,13 @@
 [
     //Specialize thatch and hay roofing
-    {   "file": "inworldthatching:blocktypes/thatchframe.json",
+    {   "file": "inworldroofing:blocktypes/thatchframe.json",
         "side": "server",
         "path": "/attributes/nextStageByType/thatchframe-tip-east/game:thatch",
         "op": "replace",
         "value": "artofgrowing:slantedroofingtip-thatch-free",
         "dependsOn": [{"modid": "artofgrowing"}]
     },
-    {   "file": "inworldthatching:blocktypes/thatchframe.json",
+    {   "file": "inworldroofing:blocktypes/thatchframe.json",
         "path": "/attributes/nextStageByType/*/game:thatch",
         "op": "replace",
         "value": "thatchwork-{shape}-straw-{horizontalorientation}-1",
@@ -15,7 +15,7 @@
     },
 
     // Add straw variant to thatchwork
-    {   "file": "inworldthatching:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatchwork.json",
         "side": "server",
         "path": "/variantgroups/1/states/-",
         "op": "add",
@@ -24,13 +24,13 @@
     },
     
     //Specialize thatch and hay from upgradeMaterial
-    {   "file": "inworldthatching:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatchwork.json",
         "side": "server",
         "path": "/attributes/upgradeMaterialByType/*-thatch-*/0",
         "op": "remove",
         "dependsOn": [{"modid": "artofgrowing"}]
     },
-    {   "file": "inworldthatching:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatchwork.json",
         "side": "server",
         "path": "/attributes/upgradeMaterialByType/*-straw-*",
         "op": "add",
@@ -39,7 +39,7 @@
     },
 
     //Add nextStageByType attribute for straw
-    {   "file": "inworldthatching:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatchwork.json",
         "side": "server",
         "path": "/attributes/nextStageByType",
         "op": "addMerge",
@@ -65,7 +65,7 @@
     },
 
     //Add textures for straw roofing
-    {   "file": "inworldthatching:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatchwork.json",
         "side": "server",
         "path": "/texturesByType/*-straw-*",
         "op": "add",

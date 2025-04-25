@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Vintagestory.API;
 using Vintagestory.API.Client;
@@ -6,7 +7,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
-namespace InWorldThatching;
+namespace InWorldRoofing;
 
 public class BlockThatchWork : Block
 {
@@ -20,18 +21,18 @@ public class BlockThatchWork : Block
     {
         base.OnLoaded(api);
 
-        NextStage = AssetLocation.Create(Attributes?["nextStage"].AsString(), InWorldThatchingSystem.MODID);
+        NextStage = AssetLocation.Create(Attributes?["nextStage"].AsString(), InWorldRoofingSystem.MODID);
 
         var upgradeMaterialsRaw = Attributes?["upgradeMaterial"].AsArray();
         List<AssetLocation> upgradeMaterials = new();
         foreach(var material in upgradeMaterialsRaw) {
-            upgradeMaterials.Add(AssetLocation.Create(material.AsString(), InWorldThatchingSystem.MODID));
+            upgradeMaterials.Add(AssetLocation.Create(material.AsString(), InWorldRoofingSystem.MODID));
         }
         UpgradeMaterial = upgradeMaterials.ToArray();
 
         if(api.Side != EnumAppSide.Client) return;
 
-        interactions = ObjectCacheUtil.GetOrCreate(api, $"inworldthatching.thatchWork-{Code.Path.Split('-')[2]}-BlockInteractions", () => {
+        interactions = ObjectCacheUtil.GetOrCreate(api, $"inworldroofing.thatchWork-{Code.Path.Split('-')[2]}-BlockInteractions", () => {
             List<ItemStack> materialStacks = new();
             foreach(var material in upgradeMaterials) {
                 materialStacks.Add(new ItemStack(api.World.GetItem(material)));

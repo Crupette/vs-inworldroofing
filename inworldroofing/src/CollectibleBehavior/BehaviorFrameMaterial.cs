@@ -10,15 +10,15 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
-namespace InWorldThatching;
+namespace InWorldRoofing;
 
 public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 {
     public SkillItem[] ToolModes;
     public AssetLocation[] FrameCodes;
-    public InWorldThatchingSystem inWorldThatchingSystem;
+    public InWorldRoofingSystem roofingSystem;
 
-    public const string SELECTED_FRAME_KEY = "inworldthatching.selectedframe";
+    public const string SELECTED_FRAME_KEY = "inworldroofing.selectedframe";
 
     public CollectibleBehaviorFrameMaterial(CollectibleObject collObj) : base(collObj)
     {
@@ -28,45 +28,45 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     public override void OnLoaded(ICoreAPI api)
     {
         base.OnLoaded(api);
-        inWorldThatchingSystem = api.ModLoader.GetModSystem<InWorldThatchingSystem>();
+        roofingSystem = api.ModLoader.GetModSystem<InWorldRoofingSystem>();
 
-        FrameCodes = ObjectCacheUtil.GetOrCreate(api, "InWorldThatching.FrameCodes", () => {
+        FrameCodes = ObjectCacheUtil.GetOrCreate(api, "inworldroofing.FrameCodes", () => {
             return new[] {
-                AssetLocation.Create("thatchframe-straight-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-bottom-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-cornerinner-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-cornerouter-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-tip-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-ridge-north", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-halfleft-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-halfright-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-ridgeend-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-ridgehalfleft-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-ridgehalfright-east", InWorldThatchingSystem.MODID),
-                AssetLocation.Create("thatchframe-top-east", InWorldThatchingSystem.MODID),
+                AssetLocation.Create("thatchframe-straight-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-bottom-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-cornerinner-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-cornerouter-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-tip-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-ridge-north", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-halfleft-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-halfright-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-ridgeend-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-ridgehalfleft-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-ridgehalfright-east", InWorldRoofingSystem.MODID),
+                AssetLocation.Create("thatchframe-top-east", InWorldRoofingSystem.MODID),
             };
         });
 
         if(api is not ICoreClientAPI capi) return;
-        ToolModes = ObjectCacheUtil.GetOrCreate(api, "InWorldThatching.ThatchFrameMaterialToolModes", () => {
+        ToolModes = ObjectCacheUtil.GetOrCreate(api, "InWorldRoofing.ThatchFrameMaterialToolModes", () => {
             List<SkillItem> modes = new() {
                 new(){
-                    Code = AssetLocation.Create("default", InWorldThatchingSystem.MODID),
+                    Code = AssetLocation.Create("default", InWorldRoofingSystem.MODID),
                     Name = Lang.Get("toolmode-thatchframematerial-placeonground"),
                     TexturePremultipliedAlpha = false
                 },
                 new(){
-                    Code = AssetLocation.Create("makeframe", InWorldThatchingSystem.MODID),
+                    Code = AssetLocation.Create("makeframe", InWorldRoofingSystem.MODID),
                     Name = Lang.Get("toolmode-thatchframematerial-placeframe"),
                     TexturePremultipliedAlpha = false
                 }
             };
 
             modes[0].WithIcon(capi, capi.Gui.LoadSvgWithPadding(
-                AssetLocation.Create("textures/icons/cross.svg", InWorldThatchingSystem.MODID),
+                AssetLocation.Create("textures/icons/cross.svg", InWorldRoofingSystem.MODID),
                 48, 48, 5, ColorUtil.WhiteArgb));
             modes[1].WithIcon(capi, capi.Gui.LoadSvgWithPadding(
-                AssetLocation.Create("textures/icons/frame.svg", InWorldThatchingSystem.MODID),
+                AssetLocation.Create("textures/icons/frame.svg", InWorldRoofingSystem.MODID),
                 48, 48, 5, ColorUtil.WhiteArgb));
 
             return modes.ToArray();
@@ -313,7 +313,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             stacks.ToArray(),
             (selectedIndex) => {
                 SetSelectedFrame(slot, selectedIndex);
-                inWorldThatchingSystem.SendSelectMessage(byPlayer, slot, selectedIndex);
+                roofingSystem.SendSelectMessage(byPlayer, slot, selectedIndex);
                 slot.MarkDirty();
             },
             () => {

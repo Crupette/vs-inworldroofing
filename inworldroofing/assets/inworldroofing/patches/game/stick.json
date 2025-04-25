@@ -10,7 +10,7 @@
         "path": "/behaviors/-",
         "op": "add",
         "value": {
-            "name": "InWorldThatching.CollectibleBehaviorFrameMaterial"
+            "name": "InWorldRoofing.CollectibleBehaviorFrameMaterial"
         }
     },
     {   "file": "game:itemtypes/resource/stick.json",

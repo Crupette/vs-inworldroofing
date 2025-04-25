@@ -4,7 +4,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 
-namespace InWorldThatching;
+namespace InWorldRoofing;
 
 [ProtoContract]
 public class ThatchFrameSelectMessage 
@@ -22,16 +22,16 @@ public enum EnumFrameOrientableBehavior
     HORIENTABLE,
 }
 
-public class InWorldThatchingSystem : ModSystem
+public class InWorldRoofingSystem : ModSystem
 {
-    public const string MODID = "inworldthatching";
+    public const string MODID = "inworldroofing";
     public const string FRAME_SELECT_CHANNEL_NAME = MODID + ".thatchframeselect";
 
     public override void Start(ICoreAPI api)
     {
-        api.RegisterBlockClass("InWorldThatching.BlockThatchFrame", typeof(BlockThatchFrame));
-        api.RegisterBlockClass("InWorldThatching.BlockThatchWork", typeof(BlockThatchWork));
-        api.RegisterCollectibleBehaviorClass("InWorldThatching.CollectibleBehaviorFrameMaterial", typeof(CollectibleBehaviorFrameMaterial));
+        api.RegisterBlockClass("InWorldRoofing.BlockThatchFrame", typeof(BlockThatchFrame));
+        api.RegisterBlockClass("InWorldRoofing.BlockThatchWork", typeof(BlockThatchWork));
+        api.RegisterCollectibleBehaviorClass("InWorldRoofing.CollectibleBehaviorFrameMaterial", typeof(CollectibleBehaviorFrameMaterial));
 
         api.Network.RegisterChannel(FRAME_SELECT_CHANNEL_NAME)
                    .RegisterMessageType(typeof(ThatchFrameSelectMessage));

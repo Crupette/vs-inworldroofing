@@ -9,7 +9,7 @@
                 "build",
                 "-c",
                 "Debug",
-                "${workspaceFolder}/inworldthatching/inworldthatching.csproj"
+                "${workspaceFolder}/inworldroofing/inworldroofing.csproj"
             ],
             "problemMatcher": "$msCompile"
         },

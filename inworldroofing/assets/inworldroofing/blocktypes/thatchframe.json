@@ -1,6 +1,6 @@
 {
     "code": "thatchframe",
-    "class": "InWorldThatching.BlockThatchFrame",
+    "class": "InWorldRoofing.BlockThatchFrame",
     "variantgroups": [
         { "code": "shape", "states": [
             "straight", "bottom", "cornerinner", "cornerouter", 

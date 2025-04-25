@@ -21,9 +21,7 @@
                 // "--openWorld" , "modding test world",
                 "--tracelog",
                 "--addModPath",
-                "${workspaceFolder}/inworldthatching/bin/Debug/Mods",
-                "--addOrigin",
-                "${workspaceFolder}/inworldthatching/assets",
+                "${workspaceFolder}/inworldroofing/bin/Debug/Mods",
                 "--dataPath",
                 "${env:HOME}/.config/VintagestoryDataDev"
             ],
@@ -45,9 +43,7 @@
             "args": [
                 "--tracelog",
                 "--addModPath",
-                "${workspaceFolder}/inworldthatching/bin/Debug/Mods",
-                 "--addOrigin",
-                 "${workspaceFolder}/inworldthatching/assets",
+                "${workspaceFolder}/inworldroofing/bin/Debug/Mods",
                  "--dataPath",
                 "${env:HOME}/.config/VintagestoryDataDev"
             ],

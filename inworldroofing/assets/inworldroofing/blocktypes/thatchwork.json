@@ -1,6 +1,6 @@
 {
     "code": "thatchwork",
-    "class": "InWorldThatching.BlockThatchWork",
+    "class": "InWorldRoofing.BlockThatchWork",
     "variantgroups": [
         { "code": "shape", "states": [
             "straight", "bottom", "cornerinner", "cornerouter", 
