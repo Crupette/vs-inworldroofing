@@ -1,0 +1,17 @@
+{
+    "code": "shape",
+    "variants": [
+        { "code": "straight" },
+        { "code": "bottom" },
+        { "code": "cornerinner" },
+        { "code": "cornerouter" },
+        { "code": "halfleft" },
+        { "code": "halfright" },
+        { "code": "ridge" },
+        { "code": "ridgeend" },
+        { "code": "ridgehalfleft" },
+        { "code": "ridgehalfright" },
+        { "code": "tip" },
+        { "code": "top" }
+    ]
+}

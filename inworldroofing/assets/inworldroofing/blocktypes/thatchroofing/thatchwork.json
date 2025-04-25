@@ -1,6 +1,6 @@
 {
     "code": "thatchwork",
-    "class": "InWorldRoofing.BlockThatchWork",
+    "class": "InWorldRoofing.BlockRoofingStage",
     "variantgroups": [
         { "code": "shape", "states": [
             "straight", "bottom", "cornerinner", "cornerouter", 
@@ -41,26 +41,93 @@
         "*-ridge-*-3"
     ],
     "attributes": {
-        "upgradeMaterialByType": {
-            "*-thatch-*": ["game:thatch", "game:drygrass"]
-        },
-        "nextStageByType": {
-            "*-bottom-thatch-*-1": "game:slantedroofingbottom-{material}-{horizontalorientation}-free",
-            "*-halfleft-thatch-*-1": "game:slantedroofinghalfleft-{material}-{horizontalorientation}-free",
-            "*-halfright-thatch-*-1": "game:slantedroofinghalfright-{material}-{horizontalorientation}-free",
-            "*-ridgeend-thatch-*-1": "game:slantedroofingridgeend-{material}-{horizontalorientation}-free",
-            "*-ridgehalfleft-thatch-*-1": "game:slantedroofingridgehalfleft-{material}-{horizontalorientation}-free",
-            "*-ridgehalfright-thatch-*-1": "game:slantedroofingridgehalfright-{material}-{horizontalorientation}-free",
-            "*-thatch-*-1": "thatchwork-{shape}-{material}-{horizontalorientation}-2",
+        "nextStageCostByType": {
+            "*-bottom-thatch-*-1": {
+                "game:slantedroofingbottom-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-halfleft-thatch-*-1": {
+                "game:slantedroofinghalfleft-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-halfright-thatch-*-1": {
+                "game:slantedroofinghalfright-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-ridgeend-thatch-*-1": {
+                "game:slantedroofingridgeend-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-ridgehalfleft-thatch-*-1": {
+                "game:slantedroofingridgehalfleft-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-ridgehalfright-thatch-*-1": {
+                "game:slantedroofingridgehalfright-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-thatch-*-1": {
+                "thatchwork-{shape}-thatch-{horizontalorientation}-2": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
 
-            "*-cornerouter-thatch-*-2": "game:slantedroofingcornerouter-{material}-{horizontalorientation}-free",
-            "*-top-thatch-*-2": "game:slantedroofingtop-{material}-{horizontalorientation}-free",
-            "*-ridge-thatch-north-2": "game:slantedroofingridge-{material}-we-free",
-            "*-ridge-thatch-east-2": "game:slantedroofingridge-{material}-ns-free",
-            "*-thatch-*-2": "thatchwork-{shape}-{material}-{horizontalorientation}-3",
+            "*-cornerouter-thatch-*-2": {
+                "game:slantedroofingcornerouter-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-top-thatch-*-2": {
+                "game:slantedroofingtop-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-ridge-thatch-north-2": {
+                "game:slantedroofingridge-thatch-we-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-ridge-thatch-east-2": {
+                "game:slantedroofingridge-thatch-ns-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-thatch-*-2": {
+                "thatchwork-{shape}-thatch-{horizontalorientation}-3": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
 
-            "*-straight-thatch-*-3": "game:slantedroofing-{material}-{horizontalorientation}-free",
-            "*-cornerinner-thatch-*-3": "game:slantedroofingcornerinner-{material}-{horizontalorientation}-free"
+            "*-straight-thatch-*-3": {
+                "game:slantedroofing-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            },
+            "*-cornerinner-thatch-*-3": {
+                "game:slantedroofingcornerinner-thatch-{horizontalorientation}-free": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 },
+                    { "type": "item", "code": "game:thatch", "quantity": 1 }
+                ]
+            }
         }
     },
     "dropsByType": {

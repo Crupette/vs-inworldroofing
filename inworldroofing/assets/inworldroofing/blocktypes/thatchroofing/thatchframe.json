@@ -1,6 +1,6 @@
 {
     "code": "thatchframe",
-    "class": "InWorldRoofing.BlockThatchFrame",
+    "class": "InWorldRoofing.BlockRoofingStage",
     "variantgroups": [
         { "code": "shape", "states": [
             "straight", "bottom", "cornerinner", "cornerouter", 
@@ -13,12 +13,12 @@
         { "loadFromProperties": "game:abstract/horizontalorientation" }
     ],
     "skipVariants": [
-        "thatchframe-tip-north",
-        "thatchframe-tip-south",
-        "thatchframe-tip-west",
+        "*-tip-north",
+        "*-tip-south",
+        "*-tip-west",
 
-        "thatchframe-ridge-south",
-        "thatchframe-ridge-west"
+        "*-ridge-south",
+        "*-ridge-west"
     ],
     "attributes": {
         "orientableBehaviorByType": {
@@ -26,29 +26,49 @@
             "thatchframe-ridge-*": "nworientable",
             "*": "horientable"
         },
-        "nextStageByType": {
+        "nextStageCostByType": {
             "thatchframe-tip-east": {
-                "game:thatch": "game:slantedroofingtip-thatch-free",
-                "game:drygrass": "game:slantedroofingtip-thatch-free"
+                "game:slantedroofingtip-thatch-free": [
+                    {
+                        "type": "item",
+                        "code": "game:drygrass",
+                        "quantity": 1
+                    },
+                    {
+                        "type": "item",
+                        "code": "game:thatch",
+                        "quantity": 1
+                    }
+                ]
             },
             "*": {
-                "game:thatch": "thatchwork-{shape}-thatch-{horizontalorientation}-1",
-                "game:drygrass": "thatchwork-{shape}-thatch-{horizontalorientation}-1"
+                "thatchwork-{shape}-thatch-{horizontalorientation}-1": [
+                    {
+                        "type": "item",
+                        "code": "game:drygrass",
+                        "quantity": 1
+                    },
+                    {
+                        "type": "item",
+                        "code": "game:thatch",
+                        "quantity": 1
+                    }
+                ]
             }
         },
         "recipeDisplayByType": {
-            "*-straight-*": "game:slantedroofing-thatch-east-free",
-            "*-bottom-*": "game:slantedroofingbottom-thatch-east-free",
-            "*-cornerinner-*": "game:slantedroofingcornerinner-thatch-east-free",
-            "*-cornerouter-*": "game:slantedroofingcornerouter-thatch-east-free",
-            "*-halfleft-*": "game:slantedroofinghalfright-thatch-east-free",
-            "*-halfright-*": "game:slantedroofinghalfleft-thatch-east-free",
-            "*-ridgeend-*": "game:slantedroofingridgeend-thatch-east-free",
-            "*-ridgehalfleft-*": "game:slantedroofingridgehalfleft-thatch-east-free",
-            "*-ridgehalfright-*": "game:slantedroofingridgehalfright-thatch-east-free",
-            "*-top-*": "game:slantedroofingtop-thatch-east-free",
-            "*-tip-*": "game:slantedroofingtip-thatch-free",
-            "*-ridge-*": "game:slantedroofingridge-thatch-ns-free"
+            "*-straight-east": "game:slantedroofing-thatch-east-free",
+            "*-bottom-east": "game:slantedroofingbottom-thatch-east-free",
+            "*-cornerinner-east": "game:slantedroofingcornerinner-thatch-east-free",
+            "*-cornerouter-east": "game:slantedroofingcornerouter-thatch-east-free",
+            "*-halfleft-east": "game:slantedroofinghalfright-thatch-east-free",
+            "*-halfright-east": "game:slantedroofinghalfleft-thatch-east-free",
+            "*-ridgeend-east": "game:slantedroofingridgeend-thatch-east-free",
+            "*-ridgehalfleft-east": "game:slantedroofingridgehalfleft-thatch-east-free",
+            "*-ridgehalfright-east": "game:slantedroofingridgehalfright-thatch-east-free",
+            "*-top-east": "game:slantedroofingtop-thatch-east-free",
+            "*-tip-east": "game:slantedroofingtip-thatch-free",
+            "*-ridge-east": "game:slantedroofingridge-thatch-ns-free"
         },
         "costByType": {
             "*-straight-*": {

@@ -1,13 +1,12 @@
 {
-    "game:heldhelp-thatchframetoolmode": "Change placing behavior",
-    "game:heldhelp-placethatchframe": "Place {0}",
+    "game:heldhelp-framematerial-toolmode": "Change placing behavior",
+    "game:heldhelp-placeframe": "Place {0}",
 
     "game:blockhelp-thatchframe-addmaterial": "Add thatching",
 
-    "game:toolmode-thatchframematerial-placeonground": "Place on ground (clears attributes)",
-    "game:toolmode-thatchframematerial-placeframe": "Make thatch frame (opens new window)",
-    "game:ingameerror-thatchframematerial-notenoughsticks": "Not enough sticks! Have {0}, need {1}",
-    "game:heldinfo-thatchframematerial-clearattributes": "This item has special attributes! To clear them, change the tool mode to \"Place on ground\".",
+    "game:toolmode-framematerial-placeonground": "Place on ground (clears attributes)",
+    "game:toolmode-framematerial-placeframe": "Make thatch frame (opens new window)",
+    "game:ingameerror-inworldroofing-nomaterial": "Not enough {0}! Have {1}, need {2}",
 
     "game:block-handbooktitle-slantedroofing-thatch-*": "How to make",
     "game:block-handbooktext-slantedroofing-thatch-*": "While holding a <a href=\"handbook://item-stick\">stick</a>, press the \"Select Tool\" keybind (default F) and choose \"Make thatch frame\"",
