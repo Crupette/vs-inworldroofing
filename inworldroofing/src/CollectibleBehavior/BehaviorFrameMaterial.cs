@@ -203,6 +203,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public override int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
     {
+        if(slot == null || byPlayer == null || blockSelection == null) return 0;
         if(slot.Itemstack.Attributes["toolMode"] != null) {
             slot.Itemstack.Attributes.RemoveAttribute("toolMode");
             slot.Itemstack.Attributes.RemoveAttribute("inworldthatching.selectedframe");
@@ -212,6 +213,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
     {
+        if(slot == null || byPlayer == null || blockSelection == null) return;
         if(toolMode != 1) {
             SetSelectedFrame(byPlayer, slot, null);
             return;

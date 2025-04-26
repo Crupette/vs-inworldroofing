@@ -11,7 +11,7 @@ using Vintagestory.API.Server;
 namespace InWorldRoofing;
 
 [ProtoContract]
-public class ThatchFrameSelectMessage 
+public class RoofingFrameSelectMessage 
 {
     [ProtoMember(1)]
     public int slotId;
@@ -43,7 +43,7 @@ public class InWorldRoofingSystem : ModSystem
         api.RegisterCollectibleBehaviorClass("InWorldRoofing.CollectibleBehaviorFrameMaterial", typeof(CollectibleBehaviorFrameMaterial));
 
         api.Network.RegisterChannel(FRAME_SELECT_CHANNEL_NAME)
-                   .RegisterMessageType(typeof(ThatchFrameSelectMessage));
+                   .RegisterMessageType(typeof(RoofingFrameSelectMessage));
     }
 
     public override void AssetsFinalize(ICoreAPI api)
@@ -90,7 +90,7 @@ public class InWorldRoofingSystem : ModSystem
 
         serverThatchFrameChannel = 
             api.Network.GetChannel(FRAME_SELECT_CHANNEL_NAME)
-                       .SetMessageHandler<ThatchFrameSelectMessage>((fromPlayer, message) => 
+                       .SetMessageHandler<RoofingFrameSelectMessage>((fromPlayer, message) => 
         {
             ItemSlot slot = fromPlayer.InventoryManager.GetHotbarInventory()[message.slotId];
             CollectibleBehaviorFrameMaterial.SetSelectedFrame(fromPlayer, slot, message.selection);
@@ -112,7 +112,7 @@ public class InWorldRoofingSystem : ModSystem
 
     public void SendSelectMessage(IClientPlayer player, ItemSlot slot, AssetLocation selection)
     {
-        ThatchFrameSelectMessage message = new() {
+        RoofingFrameSelectMessage message = new() {
             slotId = player.InventoryManager.GetHotbarInventory().GetSlotId(slot),
             selection = selection
         };
