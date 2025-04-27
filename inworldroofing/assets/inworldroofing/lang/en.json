@@ -2,7 +2,7 @@
     "game:heldhelp-framematerial-toolmode": "Change placing behavior",
     "game:heldhelp-placeframe": "Place {0}",
 
-    "game:blockhelp-thatchframe-addmaterial": "Add thatching",
+    "game:blockhelp-roofingstage-addmaterial": "Add material",
 
     "game:toolmode-framematerial-placeonground": "Place on ground (clears attributes)",
     "game:toolmode-framematerial-placeframe": "Make thatch frame (opens new window)",

@@ -1,0 +1,368 @@
+[
+    //Straight
+    {   "name": "game:slantedroofing-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 4 }
+                ],
+                "result": "thatchframe-straight-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-straight-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-straight-thatch-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-straight-thatch-{orientation}-3"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofing-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //Bottom
+    {   "name": "game:slantedroofingbottom-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 3 }
+                ],
+                "result": "thatchframe-bottom-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-bottom-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingbottom-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //Corner inner
+    {   "name": "game:slantedroofingcornerinner-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 4 }
+                ],
+                "result": "thatchframe-cornerinner-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-cornerinner-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-cornerinner-thatch-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-cornerinner-thatch-{orientation}-3"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingcornerinner-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //Cornerouter
+    {   "name": "game:slantedroofingcornerouter-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 3 }
+                ],
+                "result": "thatchframe-cornerouter-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-cornerouter-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-cornerouter-thatch-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingcornerouter-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //halfleft
+    {   "name": "game:slantedroofinghalfleft-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-halfleft-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-halfleft-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofinghalfleft-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //halfright
+    {   "name": "game:slantedroofinghalfright-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-halfright-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-halfright-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofinghalfright-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridge
+    {   "name": "game:slantedroofingridge-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 3 }
+                ],
+                "result": "thatchframe-ridge-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-ridge-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-ridge-thatch-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridge-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "nworientable"
+    },
+    //ridgeend
+    {   "name": "game:slantedroofingridgeend-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-ridgeend-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-ridgeend-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgeend-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridgehalfleft
+    {   "name": "game:slantedroofingridgehalfleft-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-ridgehalfleft-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-ridgehalfleft-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgehalfleft-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridgehalfright
+    {   "name": "game:slantedroofingridgehalfright-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-ridgehalfright-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-ridgehalfright-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgehalfright-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //top
+    {   "name": "game:slantedroofingtop-thatch-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 3 }
+                ],
+                "result": "thatchframe-top-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-top-thatch-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "thatchwork-top-thatch-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingtop-thatch-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+    //tip
+    {   "name": "game:slantedroofingtip-thatch-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:stick", "quantity": 2 }
+                ],
+                "result": "thatchframe-tip-east"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:thatch", "quantity": 1 },
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingtip-thatch-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "none"
+    }
+]

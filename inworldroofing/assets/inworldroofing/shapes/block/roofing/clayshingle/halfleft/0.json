@@ -1,0 +1,41 @@
+{
+	"editor": {
+		"collapsedPaths": "",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 0.0, 0.0, 0.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"rotationY": -90.0,
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "log1",
+					"from": [ 1.9, -4.1, 13.5 ],
+					"to": [ 5.9, -0.1, 36.5 ],
+					"rotationOrigin": [ 3.9, -4.0, 13.0 ],
+					"rotationX": 45.0,
+					"rotationY": 180.0,
+					"faces": {
+						"north": { "texture": "#firewood-north", "uv": [ 12.0, 12.0, 16.0, 16.0 ] },
+						"east": { "texture": "#firewood-bark", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false, "snapUv": false },
+						"south": { "texture": "#firewood-south", "uv": [ 0.0, 12.0, 4.0, 16.0 ] },
+						"west": { "texture": "#firewood-side", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false, "snapUv": false },
+						"up": { "texture": "#firewood-bark", "uv": [ 0.0, 8.0, 16.0, 12.0 ], "rotation": 90, "autoUv": false, "snapUv": false },
+						"down": { "texture": "#firewood-side", "uv": [ 0.0, 12.0, 16.0, 16.0 ], "rotation": 90, "autoUv": false, "snapUv": false }
+					}
+				}
+			]
+		}
+	]}

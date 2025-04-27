@@ -1,0 +1,14 @@
+{
+    "code": "claytype",
+    "variants": [
+        { "code": "black" },
+        { "code": "blue" },
+        { "code": "brown" },
+        { "code": "cream" },
+        { "code": "fire" },
+        { "code": "gray" },
+        { "code": "orange" },
+        { "code": "red" },
+        { "code": "tan" }
+    ]
+}

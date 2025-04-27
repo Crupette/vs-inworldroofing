@@ -69,21 +69,22 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             handling = EnumHandling.PreventSubsequent;
             handHandling = EnumHandHandling.PreventDefault;
             
-            BlockRoofingStage selectedFrame = world.GetBlock(GetSelectedFrame(player, slot)) as BlockRoofingStage;
+            RoofingRecipe recipe = GetSelectedRecipe(player, slot);
+            if(recipe == null) return;
 
-            switch(selectedFrame.OrientableBehavior) {
-                case EnumFrameOrientableBehavior.None: {
-                    if(!PlaceBlockNotOrientable(world, slot, player, blockSel, selectedFrame)) {
+            switch(recipe.OrientableBehavior) {
+                case EnumOrientableBehavior.None: {
+                    if(!PlaceBlockNotOrientable(world, slot, player, blockSel, recipe.FrameStage)) {
                         return;
                     }
                 } break;
-                case EnumFrameOrientableBehavior.NWOrientable: {
-                    if(!PlaceBlockNWOrientable(world, slot, player, blockSel, selectedFrame)) {
+                case EnumOrientableBehavior.NWOrientable: {
+                    if(!PlaceBlockNWOrientable(world, slot, player, blockSel, recipe.FrameStage)) {
                         return;
                     }
                 } break;
-                case EnumFrameOrientableBehavior.HOrientable: {
-                    if(!PlaceBlockHOrientable(world, slot, player, blockSel, selectedFrame)) {
+                case EnumOrientableBehavior.HOrientable: {
+                    if(!PlaceBlockHOrientable(world, slot, player, blockSel, recipe.FrameStage)) {
                         return;
                     }
                 } break;
@@ -91,18 +92,55 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
         }
     }
 
-    public bool PlaceBlockNotOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, BlockRoofingStage selectedFrame)
+    public bool PlaceBlockNotOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, RoofingRecipeStage recipe)
     {
         BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
 
-        RoofingStageIngredient cost = selectedFrame.StageCost;
+        CraftingRecipeIngredient ingredient = recipe.GetMatchingIngredient(slot.Itemstack);
+        if(slot.Itemstack.StackSize < ingredient.Quantity) {
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, ingredient.Quantity));
+            return false;
+        }
+
+        Block frameBlock = recipe.ResolvedResult;
+
+        string err = "";
+        if(frameBlock.TryPlaceBlock(world, player, new ItemStack(frameBlock), placeSel, ref err)) {
+            slot.TakeOut(ingredient.Quantity);
+        }else{
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
+            return false;
+        }
+
+        if(world.Side == EnumAppSide.Server) {
+            world.PlaySoundAt(
+                frameBlock.Sounds.Place, 
+                placeSel.Position,
+                -0.5);
+        }
+        return true;
+    }
+
+    public bool PlaceBlockHOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, RoofingRecipeStage recipe)
+    {
+        BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
+        Block frameBlock = recipe.ResolvedResult;
+
+        BlockFacing[] horVer = Block.SuggestedHVOrientation(player, blockSel);
+        AssetLocation orientedCode = frameBlock.CodeWithVariant("orientation", horVer[0].Code);
+        Block orientedBlock = world.BlockAccessor.GetBlock(orientedCode);
+
+        if(orientedBlock == null)
+            throw new System.NullReferenceException($"Unable to find rotated frame with code {orientedCode}");
+
+        CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
             (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
         string err = "";
-        if(selectedFrame.TryPlaceBlock(world, player, new ItemStack(selectedFrame), placeSel, ref err)) {
+        if(orientedBlock.TryPlaceBlock(world, player, new ItemStack(orientedBlock), placeSel, ref err)) {
             slot.TakeOut(cost.Quantity);
         }else{
             (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
@@ -111,30 +149,31 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         if(world.Side == EnumAppSide.Server) {
             world.PlaySoundAt(
-                selectedFrame.Sounds.Place, 
+                orientedBlock.Sounds.Place, 
                 placeSel.Position,
                 -0.5);
         }
         return true;
     }
 
-    public bool PlaceBlockHOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, Block selectedBlock)
+    public bool PlaceBlockNWOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, RoofingRecipeStage recipe)
     {
         BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
+        Block frameBlock = recipe.ResolvedResult;
 
         BlockFacing[] horVer = Block.SuggestedHVOrientation(player, blockSel);
-        AssetLocation orientedCode = selectedBlock.CodeWithVariant("horizontalorientation", horVer[0].Code);
+        string orientCode = "ns";
+        if(horVer[0].Index == 1 || horVer[0].Index == 3) orientCode = "we";
+        AssetLocation orientedCode = frameBlock.CodeWithVariant("orientation", orientCode);
+
         Block orientedBlock = world.BlockAccessor.GetBlock(orientedCode);
 
         if(orientedBlock == null)
             throw new System.NullReferenceException($"Unable to find rotated frame with code {orientedCode}");
 
-        if (orientedBlock is not BlockRoofingStage frameBlock)
-            throw new System.NullReferenceException($"Unable to calculate cost for non-frame block {orientedCode}");
-
-        RoofingStageIngredient cost = frameBlock.StageCost;
+        CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("Not enough sticks! Have {0}, need {1}", slot.Itemstack.StackSize, cost.Quantity));
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
@@ -148,47 +187,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         if(world.Side == EnumAppSide.Server) {
             world.PlaySoundAt(
-                frameBlock.Sounds.Place, 
-                placeSel.Position,
-                -0.5);
-        }
-        return true;
-    }
-
-    public bool PlaceBlockNWOrientable(IWorldAccessor world, ItemSlot slot, IPlayer player, BlockSelection blockSel, Block selectedBlock)
-    {
-        BlockSelection placeSel = blockSel.AddPosCopy(blockSel.Face.Normali);
-
-        BlockFacing[] horVer = Block.SuggestedHVOrientation(player, blockSel);
-        string orientCode = "north";
-        if(horVer[0].Index == 1 || horVer[0].Index == 3) orientCode = "east";
-        AssetLocation orientedCode = selectedBlock.CodeWithVariant("horizontalorientation", orientCode);
-
-        Block orientedBlock = world.BlockAccessor.GetBlock(orientedCode);
-
-        if(orientedBlock == null)
-            throw new System.NullReferenceException($"Unable to find rotated frame with code {orientedCode}");
-
-        if (orientedBlock is not BlockRoofingStage frameBlock)
-            throw new System.NullReferenceException($"Unable to calculate cost for non-frame block {orientedCode}");
-
-        RoofingStageIngredient cost = frameBlock.StageCost;
-        if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("Not enough sticks! Have {0}, need {1}", slot.Itemstack.StackSize, cost.Quantity));
-            return false;
-        }
-
-        string err = "";
-        if(orientedBlock.TryPlaceBlock(world, player, new ItemStack(orientedBlock), placeSel, ref err)) {
-            slot.TakeOut(cost.Quantity);
-        }else{
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, err, Lang.Get("placefailure-" + err));
-            return false;
-        }
-
-        if(world.Side == EnumAppSide.Server) {
-            world.PlaySoundAt(
-                frameBlock.Sounds.Place, 
+                frameBlock.Sounds.Place,
                 placeSel.Position,
                 -0.5);
         }
@@ -204,18 +203,18 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     public override int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
     {
         if(slot == null || byPlayer == null || blockSelection == null) return 0;
-        if(slot.Itemstack.Attributes["toolMode"] != null) {
+        if(slot.Itemstack?.Attributes?["toolMode"] != null) {
             slot.Itemstack.Attributes.RemoveAttribute("toolMode");
             slot.Itemstack.Attributes.RemoveAttribute("inworldthatching.selectedframe");
         }
-        return byPlayer.Entity.Attributes[PLAYER_FRAMEMATERIAL_KEY]?.ToString() == slot.Itemstack.Collectible.Code.ToString() ? 1 : 0;
+        return byPlayer.Entity?.Attributes[PLAYER_FRAMEMATERIAL_KEY]?.ToString() == slot.Itemstack?.Collectible.Code.ToString() ? 1 : 0;
     }
 
     public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
     {
         if(slot == null || byPlayer == null || blockSelection == null) return;
         if(toolMode != 1) {
-            SetSelectedFrame(byPlayer, slot, null);
+            SetSelectedRecipe(byPlayer, slot, -1);
             return;
         };
         if (byPlayer == null || byPlayer.Entity.World.Side != EnumAppSide.Client) return;
@@ -226,7 +225,9 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
     public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)
     {
-        ICoreClientAPI api = inSlot.Inventory.Api as ICoreClientAPI;
+        if(inSlot.Inventory.Api is not ICoreClientAPI api) return base.GetHeldInteractionHelp(inSlot, ref handling);
+        IPlayer player = api.World.Player;
+
         WorldInteraction[] interactions = new WorldInteraction[] {
             new() {
                 ActionLangCode = "heldhelp-framematerial-toolmode",
@@ -240,20 +241,20 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
         }
         if(toolMode == 1) {
             handling = EnumHandling.PreventDefault;
-            AssetLocation selectedFrame = GetSelectedFrame(api.World.Player, inSlot);
-            BlockRoofingStage blockFrame = api.World.GetBlock(selectedFrame) as BlockRoofingStage;
-            if(blockFrame == null) return base.GetHeldInteractionHelp(inSlot, ref handling);;
+            RoofingRecipe selectedRecipe = GetSelectedRecipe(player, inSlot);
+            Block blockFrame = selectedRecipe.ResolvedName;
+            if(blockFrame == null) return base.GetHeldInteractionHelp(inSlot, ref handling);
 
             ItemStack frameStack = new ItemStack(blockFrame);
-            RoofingStageIngredient cost = blockFrame.StageCost;
-            cost.Resolve(api.World, "CollectibleBehaviorFrameMaterial.GetHeldInteractionHelp");
+            RoofingRecipeStage frameStage = selectedRecipe.FrameStage;
+            if(frameStage == null) return base.GetHeldInteractionHelp(inSlot, ref handling);
 
             return new WorldInteraction[] {
                 new () {
                     ActionLangCode = Lang.Get("heldhelp-placeframe", blockFrame.GetHeldItemName(frameStack).ToLower()),
                     HotKeyCode = "shift",
                     MouseButton = EnumMouseButton.Right,
-                    Itemstacks = new ItemStack[] { cost.ResolvedItemstack }
+                    Itemstacks = frameStage.IngredientStacks
                 }
             };
         }
@@ -264,17 +265,21 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     GuiDialog dialog;
     public void OpenDialog(IClientPlayer byPlayer, BlockPos pos, ItemSlot slot) {
         if(dialog != null && dialog.IsOpened()) return;
-        InWorldRoofingSystem roofingSystem = InWorldRoofingSystem.Instance;
         IClientWorldAccessor world = byPlayer.Entity.World as IClientWorldAccessor;
+        InWorldRoofingSystem roofingSystem = InWorldRoofingSystem.Instance;
 
         List<ItemStack> stacks = new();
-        List<BlockRoofingStage> MatchingFrames = roofingSystem.FramesForStack(world, slot.Itemstack);
-        List<BlockRoofingStage> AvailableFrames = new();
-        foreach(var frameBlock in MatchingFrames) {
-            if(frameBlock.RecipeDisplay == null) continue;
-            Block displayBlock = world.GetBlock(frameBlock.RecipeDisplay);
+        RoofingRecipe[] matchingRecipes = 
+            roofingSystem.RecipesForFrameOrientations(slot.Itemstack, new[] {"east", "ns", "none"});
+
+        List<RoofingRecipe> displayRecipes = new();
+        List<Block> displayBlocks = new();
+        foreach(var recipe in matchingRecipes) {
+            Block displayBlock = world.GetBlock(recipe.Name);
+            if(displayBlocks.Contains(displayBlock)) continue;
+            displayRecipes.Add(recipe);
+            displayBlocks.Add(displayBlock);
             stacks.Add(new ItemStack(displayBlock));
-            AvailableFrames.Add(frameBlock);
         }
 
         ICoreClientAPI capi = world.Api as ICoreClientAPI;
@@ -282,14 +287,14 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             Lang.Get("Select roof type"),
             stacks.ToArray(),
             (selectedIndex) => {
-                AssetLocation selectedFrame = AvailableFrames[selectedIndex].Code;
-                SetSelectedFrame(byPlayer, slot, selectedFrame);
-                roofingSystem.SendSelectMessage(byPlayer, slot, selectedFrame);
+                int selectedRecipe = displayRecipes[selectedIndex].RecipeId;
+                SetSelectedRecipe(byPlayer, slot, selectedRecipe);
+                roofingSystem.SendSelectMessage(byPlayer, slot, selectedRecipe);
                 slot.MarkDirty();
             },
             () => {
-                SetSelectedFrame(byPlayer, slot, null);
-                roofingSystem.SendSelectMessage(byPlayer, slot, null);
+                SetSelectedRecipe(byPlayer, slot, -1);
+                roofingSystem.SendSelectMessage(byPlayer, slot, -1);
                 slot.MarkDirty();
             },
             pos,
@@ -300,26 +305,28 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     }
 #endregion
 
-    public static AssetLocation GetSelectedFrame(IPlayer player, ItemSlot slot)
+    public static RoofingRecipe GetSelectedRecipe(IPlayer player, ItemSlot slot)
     {
         ItemStack stack = slot.Itemstack;
         if(player.Entity.Attributes[PLAYER_FRAMEMATERIAL_KEY] == null) return null;
         if(stack.Collectible.Code != new AssetLocation(player.Entity.Attributes[PLAYER_FRAMEMATERIAL_KEY].ToString()))
             return null;
-        return new AssetLocation(player.Entity.Attributes[PLAYER_SELECTEDFRAME_KEY].ToString());
+        
+        int recipeId = player?.Entity.Attributes?[PLAYER_SELECTEDRECIPE_KEY].GetValue() as int? ?? -1;
+        return InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes.FirstOrDefault(r => r.RecipeId == recipeId);
     }
 
     public static readonly string PLAYER_FRAMEMATERIAL_KEY = "inworldroofing.currentFrameMaterial";
-    public static readonly string PLAYER_SELECTEDFRAME_KEY = "inworldroofing.currentFrame";
+    public static readonly string PLAYER_SELECTEDRECIPE_KEY = "inworldroofing.currentRecipe";
 
-    public static void SetSelectedFrame(IPlayer player, ItemSlot slot, AssetLocation value)
+    public static void SetSelectedRecipe(IPlayer player, ItemSlot slot, int value)
     {
-        if(value == null) {
+        if(value < 0) {
             player.Entity.Attributes.RemoveAttribute(PLAYER_FRAMEMATERIAL_KEY);
-            player.Entity.Attributes.RemoveAttribute(PLAYER_SELECTEDFRAME_KEY);
+            player.Entity.Attributes.RemoveAttribute(PLAYER_SELECTEDRECIPE_KEY);
             return;
         }
         player.Entity.Attributes.SetString(PLAYER_FRAMEMATERIAL_KEY, slot.Itemstack.Collectible.Code);
-        player.Entity.Attributes.SetString(PLAYER_SELECTEDFRAME_KEY, value);
+        player.Entity.Attributes.SetInt(PLAYER_SELECTEDRECIPE_KEY, value);
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using ProtoBuf;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace InWorldRoofing;
 
@@ -16,68 +20,71 @@ public class RoofingFrameSelectMessage
     [ProtoMember(1)]
     public int slotId;
     [ProtoMember(2)]
-    public AssetLocation selection;
+    public int selection;
 }
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum EnumFrameOrientableBehavior
+public enum EnumOrientableBehavior
 {
     None,
     NWOrientable,
     HOrientable,
 }
 
-
 public class InWorldRoofingSystem : ModSystem
 {
     public const string MODID = "inworldroofing";
     public const string FRAME_SELECT_CHANNEL_NAME = MODID + ".thatchframeselect";
 
-    public List<(RoofingStageIngredient, List<BlockRoofingStage>)> RoofingFrames;
     public static InWorldRoofingSystem Instance { get; private set; }
+
+    public RecipeRegistryGeneric<RoofingRecipe> RoofingRecipeRegistry;
 
     public override void Start(ICoreAPI api)
     {
         Instance = this;
-        api.RegisterBlockClass("InWorldRoofing.BlockRoofingStage", typeof(BlockRoofingStage));
         api.RegisterCollectibleBehaviorClass("InWorldRoofing.CollectibleBehaviorFrameMaterial", typeof(CollectibleBehaviorFrameMaterial));
+        api.RegisterBlockBehaviorClass("InWorldRoofing.BlockBehaviorRoofingStage", typeof(BlockBehaviorRoofingStage));
+        RoofingRecipeRegistry = api.RegisterRecipeRegistry<RecipeRegistryGeneric<RoofingRecipe>>("roofing");
 
         api.Network.RegisterChannel(FRAME_SELECT_CHANNEL_NAME)
                    .RegisterMessageType(typeof(RoofingFrameSelectMessage));
     }
 
-    public override void AssetsFinalize(ICoreAPI api)
+    public RoofingRecipe[] RecipesForFrameOrientation(ItemStack stack, string orientation)
     {
-        RoofingFrames = new();
-        foreach(var block in api.World.Blocks) {
-            if(block is BlockRoofingStage stageBlock) {
-                if(stageBlock.StageCost == null) continue;
+        List<RoofingRecipe> recipes = new();
+        foreach(var recipe in RoofingRecipeRegistry.Recipes) {
+            if(recipe.OrientationCode != orientation) continue;
+            RoofingRecipeStage frameStage = recipe.FrameStage;
+            if(frameStage == null) continue;
 
-                //Check for existing cost list.
-                bool found = false;
-                foreach(var framePair in RoofingFrames) {
-                    RoofingStageIngredient frameIngredient = framePair.Item1;
-                    if(frameIngredient.CollectibleEquals(stageBlock.StageCost)) {
-                        framePair.Item2.Add(stageBlock);
-                        found = true;
-                        break;
-                    }
-                }
-                if(!found) {
-                    RoofingFrames.Add(new(stageBlock.StageCost, new() {stageBlock}));
+            foreach(var ingredVar in frameStage.Ingredient) {
+                if(ingredVar.SatisfiesAsIngredient(stack, false)) {
+                    recipes.Add(recipe);
+                    break;
                 }
             }
         }
+        return recipes.ToArray();
     }
 
-    public List<BlockRoofingStage> FramesForStack(IWorldAccessor world, ItemStack stack) {
-        foreach(var framePair in RoofingFrames) {
-            RoofingStageIngredient ingredient = framePair.Item1;
-            if(!ingredient.Resolve(world, "InWorldRoofingSystem.FramesForStack"))
-                throw new System.Exception();
-            if(ingredient.SatisfiesAsIngredient(stack, false)) return framePair.Item2;
+    public RoofingRecipe[] RecipesForFrameOrientations(ItemStack stack, string[] orientation)
+    {
+        List<RoofingRecipe> recipes = new();
+        foreach(var recipe in RoofingRecipeRegistry.Recipes) {
+            if(!orientation.Contains(recipe.OrientationCode)) continue;
+            RoofingRecipeStage frameStage = recipe.FrameStage;
+            if(frameStage == null) continue;
+
+            foreach(var ingredVar in frameStage.Ingredient) {
+                if(ingredVar.SatisfiesAsIngredient(stack, false)) {
+                    recipes.Add(recipe);
+                    break;
+                }
+            }
         }
-        return null;
+        return recipes.ToArray();
     }
 
     #region Server
@@ -93,7 +100,7 @@ public class InWorldRoofingSystem : ModSystem
                        .SetMessageHandler<RoofingFrameSelectMessage>((fromPlayer, message) => 
         {
             ItemSlot slot = fromPlayer.InventoryManager.GetHotbarInventory()[message.slotId];
-            CollectibleBehaviorFrameMaterial.SetSelectedFrame(fromPlayer, slot, message.selection);
+            CollectibleBehaviorFrameMaterial.SetSelectedRecipe(fromPlayer, slot, message.selection);
             slot.MarkDirty();
         });
                         
@@ -110,7 +117,7 @@ public class InWorldRoofingSystem : ModSystem
             api.Network.GetChannel(FRAME_SELECT_CHANNEL_NAME);
     }
 
-    public void SendSelectMessage(IClientPlayer player, ItemSlot slot, AssetLocation selection)
+    public void SendSelectMessage(IClientPlayer player, ItemSlot slot, int selection)
     {
         RoofingFrameSelectMessage message = new() {
             slotId = player.InventoryManager.GetHotbarInventory().GetSlotId(slot),

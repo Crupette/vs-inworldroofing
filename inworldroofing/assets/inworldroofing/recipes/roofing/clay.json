@@ -1,0 +1,27 @@
+[
+    //Straight
+    {   "name": "game:slantedroofing-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 4 }
+                ],
+                "result": "clayshingleframe-straight-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "clayshinglework-straight-{type}-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofing-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "orientableBehavior": "horientable"
+    },
+]

@@ -1,72 +1,81 @@
 {
-    "code": "thatchwork",
+    "code": "clayshinglework",
     "variantgroups": [
-        { "code": "shape", "states": [
-            "straight", "bottom", "cornerinner", "cornerouter", 
-            "halfleft", "halfright", 
-            "ridgeend", "ridgehalfleft", "ridgehalfright",
-            "top",
-            "ridge"
-        ]},
-        { "code": "material", "states": [ "thatch" ]},
-        { "code": "orientation", "loadFromProperties": "game:abstract/horizontalorientation", "states": [
-            "ns", "we"
-        ]},
-        { "code": "stage", "states": [ "1", "2", "3" ]}
+        { "loadFromProperties": "inworldroofing:roofshapes" },
+        { "code": "material", "loadFromProperties": "inworldroofing:claytypes" },
+        { "loadFromProperties": "game:abstract/horizontalorientation" },
+        { "code": "stage", "states": [ "1", "2" ]}
+    ],
+    "allowedVariants": [
+        "*-straight-*-1",
+        "*-cornerinner-*"
     ],
     "skipVariants": [
-        "*-bottom-*-2",
-        "*-bottom-*-3",
-
-        "*-cornerouter-*-3",
-
-        "*-halfleft-*-2",
-        "*-halfleft-*-3",
-
-        "*-halfright-*-2",
-        "*-halfright-*-3",
-
-        "*-ridgeend-*-2",
-        "*-ridgeend-*-3",
-
-        "*-ridgehalfleft-*-2",
-        "*-ridgehalfleft-*-3",
-
-        "*-ridgehalfright-*-2",
-        "*-ridgehalfright-*-3",
-
-        "*-top-*-3",
-
-        "*-ridge-south-*",
-        "*-ridge-west-*",
-        "*-ridge-*-3",
-
-        "@.*-ridge-(north|south|east|west)-.*",
-        "@.*-(straight|bottom|cornerinner|cornerouter|halfleft|halfright|ridgeend|ridgehalfleft|ridgehalfright|top|tip)-(ns|we)-.*"
+        "*-blue-*"
     ],
-    "shapeByType": {
-        "*-north-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 90 },
-        "*-west-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 180 },
-        "*-south-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 270 },
-        "*-east-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 0 },
-
-        "*-we-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 90 },
-        "*-ns-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 0 }
-    },
-    "texturesByType": {
-        "*-thatch-*": {
-            "frame": { "base": "game:block/wood/oak"},
-            "base-side": { "base": "game:block/hay/bamboo-side"},
-            "material-side": { "base": "game:block/hay/normal-side"},
-            "material-top": { "base": "game:block/hay/normal-top"},
-            "straw1": { "base": "game:block/plant/grassroofing/straw1"}
+    "attributes": {
+        "nextStageCostByType": {
+            "*-straight-*-1": {
+                "game:slantedroofing-{material}clay-{horizontalorientation}-free": [
+                    {
+                        "type": "item",
+                        "code": "game:shingle-burned-{material}",
+                        "quantity": 1
+                    }
+                ]
+            },
+            "*-1": {
+                "clayshinglework-{shape}-{material}-{horizontalorientation}-2": [
+                    {
+                        "type": "item",
+                        "code": "game:shingle-burned-{material}",
+                        "quantity": 1
+                    }
+                ]
+            },
+            "*-cornerinner-*-2": {
+                "game:slantedroofingcornerinner-{material}clay-{horizontalorientation}-free": [
+                    {
+                        "type": "item",
+                        "code": "game:shingle-burned-{material}",
+                        "quantity": 1
+                    }
+                ]
+            }
         }
     },
+    "dropsByType": {
+        "*-straight-*": [
+            { "type": "item", "code": "game:firewood", "quantity": { "avg": 3 } },
+            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 1 }}
+        ],
+        "*-cornerouter-*-1": [
+            { "type": "item", "code": "game:firewood", "quantity": { "avg": 4 } },
+            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 1 }}
+        ],
+        "*-cornerouter-*-2": [
+            { "type": "item", "code": "game:firewood", "quantity": { "avg": 4 } },
+            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 2 }}
+        ]
+    },
+
+    "shapeByType": {
+        "*-north-*": {"base": "block/roofing/clayshingle/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/roofing/clayshingle/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/roofing/clayshingle/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/roofing/clayshingle/{shape}/{stage}", "rotateY": 0 }
+    },
+    "textures": {
+        "firewood-bark": { "base": "game:block/wood/firewood/bark" },
+		"firewood-north": { "base": "game:block/wood/firewood/north" },
+		"firewood-side": {"base": "game:block/wood/firewood/side"},
+		"firewood-south": {"base": "game:block/wood/firewood/south"},
+        "material": { "base": "game:block/clay/shingles/{material}"}
+    },
     "soundsByType": {
-        "*-thatch-*": {
-			"place": "game:block/plant",
-			"break": "game:block/plant",
-			"hit": "game:block/plant"
+        "*": {
+			"place": "game:block/ceramicplace",
+			"walk": "game:walk/stone"
 		}
     },
     "creativeinventory": { "general": [""], "decorative": [""] },
@@ -103,8 +112,8 @@
 		"*-halfright-*-south-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
 		"*-halfright-*-east-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
 
-        "*-ridge-*-ns-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
-        "*-ridge-*-we-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+        "*-ridge-*-east-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-*-north-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
 
         "*-ridgeend-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
 		"*-ridgeend-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
@@ -129,7 +138,7 @@
         "*-tip-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 } ]
 	},
 
-    "blockmaterial": "Plant",
+    "blockmaterial": "Ceramic",
 	"lightAbsorption": 0,
 	"faceCullMode": "NeverCull",
     "renderpass": "OpaqueNoCull",
