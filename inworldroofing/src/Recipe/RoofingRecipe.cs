@@ -78,7 +78,7 @@ public class RoofingRecipeStage : IByteSerializable
             else {
                 foreach(var item in world.Items) {
                     if(item?.Code == null || item.IsMissing) continue;
-                    //Skip blocks in SkipVariants
+                    //Skip items in SkipVariants
                     if(ingredVar.SkipVariants != null && WildcardUtil.MatchesVariants(ingredientCode, item.Code, ingredVar.SkipVariants)) continue;
                     //Only add codes in AllowedVariants
                     if(WildcardUtil.Match(ingredientCode, item.Code, ingredVar.AllowedVariants)) {
@@ -89,6 +89,9 @@ public class RoofingRecipeStage : IByteSerializable
                 }
             }
 
+            if(ingredVar.Name == null || ingredVar.Name.Length == 0) {
+                ingredVar.Name = "wildcard";
+            }
             mappings[ingredVar.Name] = codes.ToArray();
         }
 
@@ -114,7 +117,7 @@ public class RoofingRecipeStage : IByteSerializable
             stage.Ingredient[i] = Ingredient[i].Clone();
         }
 
-        stage.Result = Result;
+        stage.Result = Result.Clone();
         stage.StageIndex = StageIndex;
         return stage;
     }
@@ -155,7 +158,9 @@ public class RoofingRecipe : IByteSerializable
     public RoofingRecipeStage[] Stages;
 
     [JsonProperty]
-    public bool ReplaceDrops;
+    public bool ReplaceDrops = false;
+    [JsonProperty]
+    public bool ReplaceGridRecipe = false;
 
     [JsonProperty]
     public EnumOrientableBehavior OrientableBehavior;
@@ -209,7 +214,7 @@ public class RoofingRecipe : IByteSerializable
     public RoofingRecipe Clone()
     {
         RoofingRecipe recipe = new();
-        recipe.Name = Name;
+        recipe.Name = Name.Clone();
         recipe.Stages = new RoofingRecipeStage[Stages.Length];
         for(int i = 0; i < Stages.Length; i++) {
             recipe.Stages[i] = Stages[i].Clone();
@@ -217,6 +222,7 @@ public class RoofingRecipe : IByteSerializable
         }
 
         recipe.ReplaceDrops = ReplaceDrops;
+        recipe.ReplaceGridRecipe = ReplaceGridRecipe;
         recipe.OrientableBehavior = OrientableBehavior;
         recipe.OrientationCode = OrientationCode;
         recipe.Enabled = Enabled;
@@ -229,6 +235,7 @@ public class RoofingRecipe : IByteSerializable
         writer.Write(RecipeId);
         writer.Write(Name.ToShortString());
         writer.Write(ReplaceDrops);
+        writer.Write(ReplaceGridRecipe);
         writer.Write((int)OrientableBehavior);
         writer.Write(OrientationCode);
 
@@ -245,6 +252,7 @@ public class RoofingRecipe : IByteSerializable
         ResolvedName = resolver.GetBlock(Name);
 
         ReplaceDrops = reader.ReadBoolean();
+        ReplaceGridRecipe = reader.ReadBoolean();
         OrientableBehavior = (EnumOrientableBehavior)reader.ReadInt32();
         OrientationCode = reader.ReadString();
         

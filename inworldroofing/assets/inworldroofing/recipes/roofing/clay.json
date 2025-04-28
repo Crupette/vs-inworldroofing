@@ -4,7 +4,7 @@
         "stages": [
             {   "isframe": true,
                 "ingredient": [
-                    { "type": "item", "code": "game:firewood", "quantity": 4 }
+                    { "type": "item", "code": "game:firewood", "quantity": 3 }
                 ],
                 "result": "clayshingleframe-straight-{orientation}"
             },
@@ -16,12 +16,13 @@
             },
             { 
                 "ingredient": [
-                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                    { "type": "item", "code": "game:shingle-burned-{type}", "quantity": 1}
                 ],
                 "result": "game:slantedroofing-{type}clay-{orientation}-free"
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
-    },
+    }
 ]

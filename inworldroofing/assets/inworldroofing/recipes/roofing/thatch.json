@@ -38,6 +38,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //Bottom
@@ -65,6 +66,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //Corner inner
@@ -106,6 +108,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //Cornerouter
@@ -140,6 +143,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //halfleft
@@ -167,6 +171,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //halfright
@@ -194,6 +199,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //ridge
@@ -228,6 +234,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "nworientable"
     },
     //ridgeend
@@ -255,6 +262,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //ridgehalfleft
@@ -282,6 +290,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //ridgehalfright
@@ -309,6 +318,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //top
@@ -343,6 +353,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
     },
     //tip
@@ -363,6 +374,7 @@
             }
         ],
         "replaceDrops": true,
+        "replaceGridRecipe": true,
         "orientableBehavior": "none"
     }
 ]

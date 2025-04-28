@@ -63,7 +63,7 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         }
 
         ItemStack heldStack = heldSlot.Itemstack;
-        RoofingRecipeStage stage = BestStageForStack(heldStack);
+        RoofingRecipeStage stage = BestRecipeForStack(heldStack);
         if(stage == null) return false;
 
         CraftingRecipeIngredient ingredient = stage.GetMatchingIngredient(heldStack);
@@ -100,7 +100,7 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         return drops.ToArray();
     }
 
-    public RoofingRecipeStage BestStageForStack(ItemStack stack) {
+    public RoofingRecipeStage BestRecipeForStack(ItemStack stack) {
         foreach(var id in RecipeIds) {
             RoofingRecipe recipe = InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes[id];
             RoofingRecipeStage stage = recipe.Stages[StageId];

@@ -1,16 +1,25 @@
 {
     "code": "clayshingleframe",
     "variantgroups": [
-        { "loadFromProperties": "inworldroofing:roofshapes" },
-        { "loadFromProperties": "game:abstract/horizontalorientation" }
+        { "code": "shape", "states": [
+            "straight", "bottom", "cornerinner", "cornerouter", 
+            "halfleft", "halfright", 
+            "ridgeend", "ridgehalfleft", "ridgehalfright",
+            "top",
+            "tip",
+            "ridge"
+        ]},
+        { "code": "orientation", "loadFromProperties": "game:abstract/horizontalorientation", "states": [
+            "ns", "we"
+        ] }
     ],
     "skipVariants": [
         "*-tip-north",
         "*-tip-south",
         "*-tip-west",
 
-        "*-ridge-south",
-        "*-ridge-west"
+        "@.*-ridge-(north|south|east|west)",
+        "@.*-(straight|bottom|cornerinner|cornerouter|halfleft|halfright|ridgeend|ridgehalfleft|ridgehalfright|top|tip)-(ns|we)"
     ],
     "shapeByType": {
         "*-north": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 90 },
@@ -62,8 +71,8 @@
 		"*-halfright-south": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
 		"*-halfright-east": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
 
-        "*-ridge-east": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
-        "*-ridge-north": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+        "*-ridge-ns": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-we": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
 
         "*-ridgeend-north": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
 		"*-ridgeend-west": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
