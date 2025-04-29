@@ -55,9 +55,8 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling, ref EnumHandling handling)
     {
         IWorldAccessor world = byEntity?.World;
-        if(byEntity == null || world == null) return;
-
-        if(blockSel == null) return;
+        if(byEntity == null || world == null || slot == null || slot.Empty) return;
+        if(!firstEvent) return;
 
         if(byEntity.Controls.ShiftKey) {
             IPlayer player = (byEntity as EntityPlayer)?.Player;

@@ -25,7 +25,10 @@
         "*-north": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 90 },
         "*-west": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 180 },
         "*-south": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 270 },
-        "*-east": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 0 }
+        "*-east": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 0 },
+
+        "*-ns": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 0 },
+        "*-we": {"base": "block/roofing/clayshingle/{shape}/0", "rotateY": 90 }
     },
     "textures": {
         "firewood-bark": { "base": "game:block/wood/firewood/bark" },

@@ -68,11 +68,15 @@ public class RoofingRecipeLoader : ModSystem
         Dictionary<string, string[]> nameToCodeMappings = recipe.GetNameToCodeMapping(api.World);
         if(nameToCodeMappings.Count > 0) {
             List<RoofingRecipe> subRecipes = new() {recipe.Clone()};
+            //The normal method used by vanilla doesn't work here, because each orientation needs all of the other
+            //variants. Therefore, we need to properly nest things.
             foreach(var mappingPair in nameToCodeMappings) {
+                //List to replace subRecipes when this loop is through.
                 List<RoofingRecipe> newRecipes = new();
                 string variantName = mappingPair.Key;
                 string[] variants = mappingPair.Value;
 
+                //Fill {variantName} with 'variant' in recipes to replace subRecipe
                 foreach(var subRecipe in subRecipes) {
                     foreach(var variant in variants) {
                         RoofingRecipe newRecipe;
@@ -121,6 +125,7 @@ public class RoofingRecipeLoader : ModSystem
 
     public override void AssetsFinalize(ICoreAPI api)
     {
+        long elapsedMiliseconds = api.World.ElapsedMilliseconds;
         int recipesDisabled = 0;
         Dictionary<AssetLocation, (int, List<RoofingRecipe>)> stageRecipes = new();
         foreach(var recipe in RoofingSystem.RoofingRecipeRegistry.Recipes) {
@@ -128,10 +133,12 @@ public class RoofingRecipeLoader : ModSystem
                 RoofingRecipeStage stage = recipe.Stages[i];
                 Block stageBlock = stage.ResolvedResult;
 
+                //Collect stageblocks for later behavior manipulations.
                 if(!stageRecipes.ContainsKey(stageBlock.Code)) {
                     stageRecipes[stageBlock.Code] = (i + 1, new() { recipe });
                 }else stageRecipes[stageBlock.Code].Item2.Add(recipe);
 
+                //Remove OrientableBehavior from blocks with stage.
                 if(stageBlock.HasBlockBehavior<BlockBehaviorHorizontalOrientable>()) {
                     BlockBehaviorHorizontalOrientable orientable = stageBlock.GetBehavior<BlockBehaviorHorizontalOrientable>();
                     stageBlock.BlockBehaviors = stageBlock.BlockBehaviors.Remove(orientable);
@@ -143,10 +150,21 @@ public class RoofingRecipeLoader : ModSystem
                     stageBlock.BlockBehaviors = stageBlock.BlockBehaviors.Remove(orientable);
                     stageBlock.CollectibleBehaviors = stageBlock.CollectibleBehaviors.Remove(orientable);
                 }
+
+                //Add FrameMaterial behavior to ingredients part of FrameStage
+                if(stage.IsFrame) {
+                    foreach(var ingred in stage.IngredientStacks) {
+                        if(ingred.Collectible.HasBehavior<CollectibleBehaviorFrameMaterial>()) continue;
+                        CollectibleBehaviorFrameMaterial frameBehavior = new(ingred.Collectible);
+                        frameBehavior.Initialize(new JsonObject(new JObject()));
+                        ingred.Collectible.CollectibleBehaviors = new CollectibleBehavior[] { frameBehavior }.Append(ingred.Collectible.CollectibleBehaviors);
+                    }
+                }
             }
 
             if(!recipe.ReplaceDrops) continue;
 
+            //Replace drops for stage block with sum of previous stages
             List<BlockDropItemStack> blockDropStacks = new();
             foreach(var stage in recipe.Stages) {
                 BlockDropItemStack stageDrop;
@@ -163,6 +181,8 @@ public class RoofingRecipeLoader : ModSystem
             recipe.Stages[^1].ResolvedResult.Drops = blockDropStacks.ToArray();
         }
 
+        //Add BehaviorRoofingStage to all blocks associated with a RoofingRecipeStage, except for the final block.
+        //The behavior needs data from the recipe stage after it, so the index is shifted 1 up.
         foreach(var stagePair in stageRecipes) {
             Block stageBlock = api.World.GetBlock(stagePair.Key);
             int stage = stagePair.Value.Item1;
@@ -183,6 +203,7 @@ public class RoofingRecipeLoader : ModSystem
                 stageBlock.CollectibleBehaviors = stageBlock.CollectibleBehaviors.Append(stageBehavior);
             }
 
+            //If the recipe says to replace the grid recipe, disable and remove it from World.GridRecipes.
             if(recipes[0].ReplaceGridRecipe) {
                 List<GridRecipe> toRemove = new();
                 foreach(var gridRecipe in api.World.GridRecipes) {
@@ -197,7 +218,7 @@ public class RoofingRecipeLoader : ModSystem
             }
         }
 
-        api.World.Logger.Debug($"{recipesDisabled} grid recipes disabled by roofing recipes.");
+        api.World.Logger.Debug($"{recipesDisabled} grid recipes disabled by roofing recipes in {api.World.ElapsedMilliseconds - elapsedMiliseconds} ms.");
     }
 
 }

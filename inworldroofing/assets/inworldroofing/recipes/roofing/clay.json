@@ -24,5 +24,237 @@
         "replaceDrops": true,
         "replaceGridRecipe": true,
         "orientableBehavior": "horientable"
+    },
+    //Bottom
+    {   "name": "game:slantedroofingbottom-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 3 }
+                ],
+                "result": "clayshingleframe-bottom-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingbottom-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //cornerinner
+    {   "name": "game:slantedroofingcornerinner-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 4 }
+                ],
+                "result": "clayshingleframe-cornerinner-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "clayshinglework-cornerinner-{type}-{orientation}-1"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "clayshinglework-cornerinner-{type}-{orientation}-2"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-{type}", "quantity": 1}
+                ],
+                "result": "game:slantedroofingcornerinner-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //cornerouter
+    {   "name": "game:slantedroofingcornerouter-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 3 }
+                ],
+                "result": "clayshingleframe-cornerouter-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingcornerouter-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //halfleft
+    {   "name": "game:slantedroofinghalfleft-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-halfleft-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofinghalfleft-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //halfright
+    {   "name": "game:slantedroofinghalfright-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-halfright-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofinghalfright-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridge
+    {   "name": "game:slantedroofingridge-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-ridge-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingridge-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "nworientable"
+    },
+    //ridgeend
+    {   "name": "game:slantedroofingridgeend-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-ridgeend-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingridgeend-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridgehalfleft
+    {   "name": "game:slantedroofingridgehalfleft-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-ridgehalfleft-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingridgehalfleft-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //ridgehalfright
+    {   "name": "game:slantedroofingridgehalfright-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-ridgehalfright-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingridgehalfright-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //top
+    {   "name": "game:slantedroofingtop-grayclay-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-top-{orientation}"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingtop-{type}clay-{orientation}-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //tip
+    {   "name": "game:slantedroofingtip-grayclay-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:firewood", "quantity": 1 }
+                ],
+                "result": "clayshingleframe-tip-east"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:shingle-burned-*", "name": "type", "quantity": 1}
+                ],
+                "result": "game:slantedroofingtip-{type}clay-free"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "none"
     }
 ]

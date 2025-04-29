@@ -13,51 +13,6 @@
     "skipVariants": [
         "*-blue-*"
     ],
-    "attributes": {
-        "nextStageCostByType": {
-            "*-straight-*-1": {
-                "game:slantedroofing-{material}clay-{horizontalorientation}-free": [
-                    {
-                        "type": "item",
-                        "code": "game:shingle-burned-{material}",
-                        "quantity": 1
-                    }
-                ]
-            },
-            "*-1": {
-                "clayshinglework-{shape}-{material}-{horizontalorientation}-2": [
-                    {
-                        "type": "item",
-                        "code": "game:shingle-burned-{material}",
-                        "quantity": 1
-                    }
-                ]
-            },
-            "*-cornerinner-*-2": {
-                "game:slantedroofingcornerinner-{material}clay-{horizontalorientation}-free": [
-                    {
-                        "type": "item",
-                        "code": "game:shingle-burned-{material}",
-                        "quantity": 1
-                    }
-                ]
-            }
-        }
-    },
-    "dropsByType": {
-        "*-straight-*": [
-            { "type": "item", "code": "game:firewood", "quantity": { "avg": 3 } },
-            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 1 }}
-        ],
-        "*-cornerouter-*-1": [
-            { "type": "item", "code": "game:firewood", "quantity": { "avg": 4 } },
-            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 1 }}
-        ],
-        "*-cornerouter-*-2": [
-            { "type": "item", "code": "game:firewood", "quantity": { "avg": 4 } },
-            { "type": "item", "code": "game:shingle-burned-{material}", "quantity": { "avg": 2 }}
-        ]
-    },
 
     "shapeByType": {
         "*-north-*": {"base": "block/roofing/clayshingle/{shape}/{stage}", "rotateY": 90 },
