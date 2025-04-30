@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -35,56 +36,27 @@ public class InWorldRoofingSystem : ModSystem
 {
     public const string MODID = "inworldroofing";
     public const string FRAME_SELECT_CHANNEL_NAME = MODID + ".thatchframeselect";
-
-    public static InWorldRoofingSystem Instance { get; private set; }
-
-    public RecipeRegistryGeneric<RoofingRecipe> RoofingRecipeRegistry;
+    public Harmony harmony;
 
     public override void Start(ICoreAPI api)
     {
-        Instance = this;
-        api.RegisterCollectibleBehaviorClass("InWorldRoofing.CollectibleBehaviorFrameMaterial", typeof(CollectibleBehaviorFrameMaterial));
-        api.RegisterBlockBehaviorClass("InWorldRoofing.BlockBehaviorRoofingStage", typeof(BlockBehaviorRoofingStage));
-        RoofingRecipeRegistry = api.RegisterRecipeRegistry<RecipeRegistryGeneric<RoofingRecipe>>("roofing");
+        api.RegisterCollectibleBehaviorClass("InWorldRoofing.CollectibleBehaviorFrameMaterial", 
+            typeof(CollectibleBehaviorFrameMaterial));
+        api.RegisterBlockBehaviorClass("InWorldRoofing.BlockBehaviorRoofingStage", 
+            typeof(BlockBehaviorRoofingStage));
 
         api.Network.RegisterChannel(FRAME_SELECT_CHANNEL_NAME)
                    .RegisterMessageType(typeof(RoofingFrameSelectMessage));
+
+        if(!Harmony.HasAnyPatches(MODID)) {
+            harmony = new Harmony(MODID);
+            harmony.PatchAll();
+        }
     }
 
-    public RoofingRecipe[] RecipesForFrameOrientation(ItemStack stack, string orientation)
+    public override void Dispose()
     {
-        List<RoofingRecipe> recipes = new();
-        foreach(var recipe in RoofingRecipeRegistry.Recipes) {
-            if(recipe.OrientationCode != orientation) continue;
-            RoofingRecipeStage frameStage = recipe.FrameStage;
-            if(frameStage == null) continue;
-
-            foreach(var ingredVar in frameStage.Ingredient) {
-                if(ingredVar.SatisfiesAsIngredient(stack, false)) {
-                    recipes.Add(recipe);
-                    break;
-                }
-            }
-        }
-        return recipes.ToArray();
-    }
-
-    public RoofingRecipe[] RecipesForFrameOrientations(ItemStack stack, string[] orientation)
-    {
-        List<RoofingRecipe> recipes = new();
-        foreach(var recipe in RoofingRecipeRegistry.Recipes) {
-            if(!orientation.Contains(recipe.OrientationCode)) continue;
-            RoofingRecipeStage frameStage = recipe.FrameStage;
-            if(frameStage == null) continue;
-
-            foreach(var ingredVar in frameStage.Ingredient) {
-                if(ingredVar.SatisfiesAsIngredient(stack, false)) {
-                    recipes.Add(recipe);
-                    break;
-                }
-            }
-        }
-        return recipes.ToArray();
+        harmony?.UnpatchAll(MODID);
     }
 
     #region Server

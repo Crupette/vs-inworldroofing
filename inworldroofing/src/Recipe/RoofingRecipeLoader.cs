@@ -1,22 +1,17 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Numerics;
 using Newtonsoft.Json.Linq;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
-using Vintagestory.Server;
 
 namespace InWorldRoofing;
 
 public class RoofingRecipeLoader : ModSystem
 {
     ICoreServerAPI api;
-    InWorldRoofingSystem RoofingSystem;
 
     public override double ExecuteOrder()
     {
@@ -32,8 +27,6 @@ public class RoofingRecipeLoader : ModSystem
     {
         if(api is not ICoreServerAPI sapi) return;
         this.api = sapi;
-
-        RoofingSystem = sapi.ModLoader.GetModSystem<InWorldRoofingSystem>();
 
         LoadRoofingRecipes();
     }
@@ -108,8 +101,7 @@ public class RoofingRecipeLoader : ModSystem
                     continue;
                 }
 
-                subRecipe.RecipeId = RoofingSystem.RoofingRecipeRegistry.Recipes.Count;
-                RoofingSystem.RoofingRecipeRegistry.Recipes.Add(subRecipe);
+                ApiAdditions.RegisterRoofingRecipe(api, subRecipe);
                 quantityRegistered++;
             }
         }else{
@@ -117,8 +109,7 @@ public class RoofingRecipeLoader : ModSystem
                 quantityIgnored++;
                 return;
             }
-            recipe.RecipeId = RoofingSystem.RoofingRecipeRegistry.Recipes.Count;
-            RoofingSystem.RoofingRecipeRegistry.Recipes.Add(recipe);
+            ApiAdditions.RegisterRoofingRecipe(api, recipe);
             quantityRegistered++;
         }
     }
@@ -128,7 +119,7 @@ public class RoofingRecipeLoader : ModSystem
         long elapsedMiliseconds = api.World.ElapsedMilliseconds;
         int recipesDisabled = 0;
         Dictionary<AssetLocation, (int, List<RoofingRecipe>)> stageRecipes = new();
-        foreach(var recipe in RoofingSystem.RoofingRecipeRegistry.Recipes) {
+        foreach(var recipe in ApiAdditions.RoofingRecipes(api)) {
             for(int i = 0; i < recipe.Stages.Length; i++) {
                 RoofingRecipeStage stage = recipe.Stages[i];
                 Block stageBlock = stage.ResolvedResult;
@@ -157,6 +148,7 @@ public class RoofingRecipeLoader : ModSystem
                         if(ingred.Collectible.HasBehavior<CollectibleBehaviorFrameMaterial>()) continue;
                         CollectibleBehaviorFrameMaterial frameBehavior = new(ingred.Collectible);
                         frameBehavior.Initialize(new JsonObject(new JObject()));
+
                         ingred.Collectible.CollectibleBehaviors = new CollectibleBehavior[] { frameBehavior }.Append(ingred.Collectible.CollectibleBehaviors);
                     }
                 }

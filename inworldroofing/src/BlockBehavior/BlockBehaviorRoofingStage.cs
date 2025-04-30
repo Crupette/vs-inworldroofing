@@ -15,25 +15,8 @@ namespace InWorldRoofing;
 public class BlockBehaviorRoofingStage : BlockBehavior
 {
     public int[] RecipeIds;
-    public RoofingRecipe[] Recipes {
-        get {
-            RoofingRecipe[] recipes = new RoofingRecipe[RecipeIds.Length];
-            for(int i = 0; i < RecipeIds.Length; i++) 
-                recipes[i] = InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes[RecipeIds[i]];
-            return recipes;
-        }
-    }
 
     public int StageId;
-    public RoofingRecipeStage[] Stages {
-        get {
-            RoofingRecipeStage[] stages = new RoofingRecipeStage[RecipeIds.Length];
-            RoofingRecipe[] recipes = Recipes;
-            for(int i = 0; i < RecipeIds.Length; i++)
-                stages[i] = recipes[i].Stages[StageId];
-            return stages;
-        }
-    }
 
     public BlockBehaviorRoofingStage(Block block) : base(block)
     {
@@ -63,7 +46,7 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         }
 
         ItemStack heldStack = heldSlot.Itemstack;
-        RoofingRecipeStage stage = BestRecipeForStack(heldStack);
+        RoofingRecipeStage stage = BestRecipeForStack(api, heldStack);
         if(stage == null) return false;
 
         CraftingRecipeIngredient ingredient = stage.GetMatchingIngredient(heldStack);
@@ -89,7 +72,8 @@ public class BlockBehaviorRoofingStage : BlockBehavior
     public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropChanceMultiplier, ref EnumHandling handling)
     {
         List<ItemStack> drops = new();
-        RoofingRecipe firstRecipe = InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes[RecipeIds[0]];
+        ICoreAPI api = world.Api;
+        RoofingRecipe firstRecipe = ApiAdditions.RoofingRecipes(api)[RecipeIds[0]];
         for(int i = 0; i < StageId; i++) {
             RoofingRecipeStage stage = firstRecipe.Stages[i];
             CraftingRecipeIngredient firstIngredient = stage.Ingredient[0];
@@ -100,9 +84,10 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         return drops.ToArray();
     }
 
-    public RoofingRecipeStage BestRecipeForStack(ItemStack stack) {
+    public RoofingRecipeStage BestRecipeForStack(ICoreAPI api, ItemStack stack) {
+        
         foreach(var id in RecipeIds) {
-            RoofingRecipe recipe = InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes[id];
+            RoofingRecipe recipe = ApiAdditions.RoofingRecipes(api)[id];
             RoofingRecipeStage stage = recipe.Stages[StageId];
             if(stage.MatchesIngredient(stack)) return stage;
         }
@@ -112,11 +97,12 @@ public class BlockBehaviorRoofingStage : BlockBehavior
     public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
     {
         WorldInteraction[] baseInteractions = base.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handling);
+        ICoreAPI api = world.Api;
         return baseInteractions.Append(ObjectCacheUtil.GetOrCreate<WorldInteraction[]>(world.Api, $"InWorldRoofing.RoofingStage-{block.Code}-Help", () => {
-            RoofingRecipeStage[] stages = Stages;
+            RoofingRecipeStage[] stages = GetStages(api);
             List<ItemStack> stacks = new();
 
-            foreach(var stage in Stages) {
+            foreach(var stage in stages) {
                 stage.IngredientStacks.Foreach(stack => stacks.Add(stack));
             }
 
@@ -130,5 +116,19 @@ public class BlockBehaviorRoofingStage : BlockBehavior
                 }
             };
         }));
+    }
+
+    public RoofingRecipe[] GetRecipes(ICoreAPI api) {
+        List<RoofingRecipe> recipes = new();
+        ApiAdditions.RoofingRecipes(api).ForEach((recipe) => {
+            if(RecipeIds.Contains(recipe.RecipeId)) recipes.Add(recipe);
+        });
+        return recipes.ToArray();
+    }
+
+    public RoofingRecipeStage[] GetStages(ICoreAPI api) {
+        List<RoofingRecipeStage> stages = new();
+        GetRecipes(api).Foreach(stage => stages.Add(stage.Stages[StageId]));
+        return stages.ToArray();
     }
 }

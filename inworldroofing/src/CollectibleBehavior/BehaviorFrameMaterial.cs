@@ -265,11 +265,11 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     public void OpenDialog(IClientPlayer byPlayer, BlockPos pos, ItemSlot slot) {
         if(dialog != null && dialog.IsOpened()) return;
         IClientWorldAccessor world = byPlayer.Entity.World as IClientWorldAccessor;
-        InWorldRoofingSystem roofingSystem = InWorldRoofingSystem.Instance;
+        ICoreAPI api = world.Api;
 
         List<ItemStack> stacks = new();
         RoofingRecipe[] matchingRecipes = 
-            roofingSystem.RecipesForFrameOrientations(slot.Itemstack, new[] {"east", "ns", "none"});
+            ApiAdditions.RoofingRecipesForFrameOrientations(api, slot.Itemstack, "east", "ns", "none");
 
         List<RoofingRecipe> displayRecipes = new();
         List<Block> displayBlocks = new();
@@ -288,12 +288,12 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             (selectedIndex) => {
                 int selectedRecipe = displayRecipes[selectedIndex].RecipeId;
                 SetSelectedRecipe(byPlayer, slot, selectedRecipe);
-                roofingSystem.SendSelectMessage(byPlayer, slot, selectedRecipe);
+                ApiAdditions.RoofingSystem(api).SendSelectMessage(byPlayer, slot, selectedRecipe);
                 slot.MarkDirty();
             },
             () => {
                 SetSelectedRecipe(byPlayer, slot, -1);
-                roofingSystem.SendSelectMessage(byPlayer, slot, -1);
+                ApiAdditions.RoofingSystem(api).SendSelectMessage(byPlayer, slot, -1);
                 slot.MarkDirty();
             },
             pos,
@@ -308,11 +308,12 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
     {
         ItemStack stack = slot.Itemstack;
         if(player.Entity.Attributes[PLAYER_FRAMEMATERIAL_KEY] == null) return null;
+        ICoreAPI api = player?.Entity.Api;
         if(stack.Collectible.Code != new AssetLocation(player.Entity.Attributes[PLAYER_FRAMEMATERIAL_KEY].ToString()))
             return null;
         
         int recipeId = player?.Entity.Attributes?[PLAYER_SELECTEDRECIPE_KEY].GetValue() as int? ?? -1;
-        return InWorldRoofingSystem.Instance.RoofingRecipeRegistry.Recipes.FirstOrDefault(r => r.RecipeId == recipeId);
+        return ApiAdditions.RoofingRecipes(api).FirstOrDefault(r => r.RecipeId == recipeId);
     }
 
     public static readonly string PLAYER_FRAMEMATERIAL_KEY = "inworldroofing.currentFrameMaterial";
