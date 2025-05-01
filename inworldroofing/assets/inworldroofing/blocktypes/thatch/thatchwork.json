@@ -45,13 +45,13 @@
         "@.*-(straight|bottom|cornerinner|cornerouter|halfleft|halfright|ridgeend|ridgehalfleft|ridgehalfright|top|tip)-(ns|we)-.*"
     ],
     "shapeByType": {
-        "*-north-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 90 },
-        "*-west-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 180 },
-        "*-south-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 270 },
-        "*-east-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 0 },
+        "*-north-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 0 },
 
-        "*-we-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 90 },
-        "*-ns-*": {"base": "block/roofing/thatchframe/{shape}/{stage}", "rotateY": 0 }
+        "*-we-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 90 },
+        "*-ns-*": {"base": "block/roofing/thatch/{shape}/{stage}", "rotateY": 0 }
     },
     "texturesByType": {
         "*-thatch-*": {

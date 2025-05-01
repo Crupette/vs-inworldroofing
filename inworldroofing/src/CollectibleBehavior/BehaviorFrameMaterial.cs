@@ -31,12 +31,12 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
             List<SkillItem> modes = new() {
                 new(){
                     Code = AssetLocation.Create("default", InWorldRoofingSystem.MODID),
-                    Name = Lang.Get("toolmode-framematerial-placeonground"),
+                    Name = Lang.Get("toolmode-inworldroofing-placeonground"),
                     TexturePremultipliedAlpha = false
                 },
                 new(){
                     Code = AssetLocation.Create("makeframe", InWorldRoofingSystem.MODID),
-                    Name = Lang.Get("toolmode-framematerial-placeframe"),
+                    Name = Lang.Get("toolmode-inworldroofing-placeframe"),
                     TexturePremultipliedAlpha = false
                 }
             };
@@ -97,7 +97,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient ingredient = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < ingredient.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, ingredient.Quantity));
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, ingredient.Quantity));
             return false;
         }
 
@@ -134,7 +134,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, cost.Quantity));
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
@@ -172,7 +172,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-thatchframematerial-notenoughsticks", slot.Itemstack.StackSize, cost.Quantity));
+            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
@@ -229,7 +229,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         WorldInteraction[] interactions = new WorldInteraction[] {
             new() {
-                ActionLangCode = "heldhelp-framematerial-toolmode",
+                ActionLangCode = "heldhelp-inworldroofing-toolmode",
                 HotKeyCode = "toolmodeselect",
                 MouseButton = EnumMouseButton.None
             }
@@ -250,7 +250,7 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
             return new WorldInteraction[] {
                 new () {
-                    ActionLangCode = Lang.Get("heldhelp-placeframe", blockFrame.GetHeldItemName(frameStack).ToLower()),
+                    ActionLangCode = Lang.Get("heldhelp-inworldroofing-placeframe", blockFrame.GetHeldItemName(frameStack).ToLower()),
                     HotKeyCode = "shift",
                     MouseButton = EnumMouseButton.Right,
                     Itemstacks = frameStage.IngredientStacks

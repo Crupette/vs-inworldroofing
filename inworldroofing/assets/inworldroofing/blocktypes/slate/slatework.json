@@ -1,0 +1,101 @@
+{
+    "enabled": "false",
+    "code": "slatework",
+    "variantgroups": [
+        { "loadFromProperties": "inworldroofing:roofshapes" },
+        { "code": "claytype", "states": [ "blue", "red", "fire" ] },
+        { "loadFromProperties": "game:abstract/horizontalorientation" },
+        { "code": "stage", "states": [ "1", "2" ]}
+    ],
+    "allowedVariants": [
+        "*-straight-*",
+        "*-1"
+    ],
+
+    "shapeByType": {
+        "*-north-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 0 }
+    },
+    "textures": {
+        "firewood-bark": { "base": "game:block/wood/firewood/bark" },
+		"firewood-north": { "base": "game:block/wood/firewood/north" },
+		"firewood-side": {"base": "game:block/wood/firewood/side"},
+		"firewood-south": {"base": "game:block/wood/firewood/south"},
+        "clay": { "base": "game:block/clay/{claytype}clay"},
+        "slate": { "base": "game:block/stone/shingles/slate*"}
+    },
+    "soundsByType": {
+        "*": {
+			"place": "game:block/ceramicplace",
+			"walk": "game:walk/stone"
+		}
+    },
+    "creativeinventory": { "general": [""], "decorative": [""] },
+    "resistance": 2,
+
+    "collisionSelectionBoxesByType": {
+		"*-straight-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-straight-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-straight-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-straight-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-bottom-*-north-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 90 }],
+		"*-bottom-*-west-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 180 }],
+		"*-bottom-*-south-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 270 }],
+		"*-bottom-*-east-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1 }],
+
+        "*-cornerinner-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerinner-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerinner-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerinner-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-cornerouter-*-north-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerouter-*-west-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerouter-*-south-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerouter-*-east-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-halfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 90 } ],
+		"*-halfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 180 } ],
+		"*-halfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 270 } ],
+		"*-halfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5 } ],
+
+        "*-halfright-*-north-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-halfright-*-west-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-halfright-*-south-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-halfright-*-east-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-ridge-*-east-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-*-north-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+
+        "*-ridgeend-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
+		"*-ridgeend-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
+		"*-ridgeend-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 270 }],
+		"*-ridgeend-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5 }],
+
+        "*-ridgehalfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1 }],
+
+        "*-ridgehalfright-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfright-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfright-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfright-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 }],
+
+        "*-top-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 90 }],
+		"*-top-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 180 }],
+		"*-top-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 270 }],
+		"*-top-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, }],
+
+        "*-tip-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 } ]
+	},
+
+    "blockmaterial": "Ceramic",
+	"lightAbsorption": 0,
+	"faceCullMode": "NeverCull",
+    "renderpass": "OpaqueNoCull",
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false }
+}
