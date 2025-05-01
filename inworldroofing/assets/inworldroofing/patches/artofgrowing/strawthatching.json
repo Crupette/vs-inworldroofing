@@ -1,21 +1,6 @@
 [
-    //Specialize thatch and hay roofing
-    {   "file": "inworldroofing:blocktypes/thatchframe.json",
-        "side": "server",
-        "path": "/attributes/nextStageByType/thatchframe-tip-east/game:thatch",
-        "op": "replace",
-        "value": "artofgrowing:slantedroofingtip-thatch-free",
-        "dependsOn": [{"modid": "artofgrowing"}]
-    },
-    {   "file": "inworldroofing:blocktypes/thatchframe.json",
-        "path": "/attributes/nextStageByType/*/game:thatch",
-        "op": "replace",
-        "value": "thatchwork-{shape}-straw-{horizontalorientation}-1",
-        "dependsOn": [{"modid": "artofgrowing"}]
-    },
-
     // Add straw variant to thatchwork
-    {   "file": "inworldroofing:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatch/thatchwork.json",
         "side": "server",
         "path": "/variantgroups/1/states/-",
         "op": "add",
@@ -24,7 +9,7 @@
     },
 
     //Add textures for straw roofing
-    {   "file": "inworldroofing:blocktypes/thatchwork.json",
+    {   "file": "inworldroofing:blocktypes/thatch/thatchwork.json",
         "side": "server",
         "path": "/texturesByType/*-straw-*",
         "op": "add",
@@ -35,6 +20,400 @@
             "material-top": { "base": "artofgrowing:block/thatch/normal-top"},
             "straw1": { "base": "artofgrowing:block/thatch/straw1"}
         },
+        "dependsOn": [{"modid": "artofgrowing"}]
+    },
+
+    //Remove straw from existing recipe.
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/0/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/1/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/2/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/3/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/4/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/5/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/6/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/7/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/8/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/9/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/10/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/11/stages/1/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/0/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/1/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/2/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/3/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/4/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/5/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/6/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/7/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/8/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/9/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/10/stages/2/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/0/stages/3/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/2/stages/3/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/3/stages/3/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/6/stages/3/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/10/stages/3/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/0/stages/4/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+    { "file": "inworldroofing:recipes/roofing/thatch.json", "side": "server", "path": "/2/stages/4/ingredient/0", "op": "remove", "dependsOn": [{"modid": "artofgrowing"}]},
+
+    //Add recipes for straw roofing
+    {   "file": "inworldroofing:recipes/roofing/thatch.json",
+        "side": "server",
+        "path": "/-",
+        "op": "addeach",
+        "value": 
+        [
+            //Straight
+            {   "name": "game:slantedroofing-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 4 }
+                        ],
+                        "result": "thatchframe-straight-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-straight-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-straight-straw-{orientation}-2"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-straight-straw-{orientation}-3"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofing-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //Bottom
+            {   "name": "game:slantedroofingbottom-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 3 }
+                        ],
+                        "result": "thatchframe-bottom-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-bottom-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingbottom-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //Corner inner
+            {   "name": "game:slantedroofingcornerinner-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 4 }
+                        ],
+                        "result": "thatchframe-cornerinner-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-cornerinner-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-cornerinner-straw-{orientation}-2"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-cornerinner-straw-{orientation}-3"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingcornerinner-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //Cornerouter
+            {   "name": "game:slantedroofingcornerouter-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 3 }
+                        ],
+                        "result": "thatchframe-cornerouter-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-cornerouter-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-cornerouter-straw-{orientation}-2"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingcornerouter-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //halfleft
+            {   "name": "game:slantedroofinghalfleft-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-halfleft-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-halfleft-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofinghalfleft-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //halfright
+            {   "name": "game:slantedroofinghalfright-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-halfright-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-halfright-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofinghalfright-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //ridge
+            {   "name": "game:slantedroofingridge-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 3 }
+                        ],
+                        "result": "thatchframe-ridge-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-ridge-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-ridge-straw-{orientation}-2"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingridge-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "nworientable"
+            },
+            //ridgeend
+            {   "name": "game:slantedroofingridgeend-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-ridgeend-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-ridgeend-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingridgeend-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //ridgehalfleft
+            {   "name": "game:slantedroofingridgehalfleft-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-ridgehalfleft-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-ridgehalfleft-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingridgehalfleft-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //ridgehalfright
+            {   "name": "game:slantedroofingridgehalfright-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-ridgehalfright-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-ridgehalfright-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingridgehalfright-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //top
+            {   "name": "game:slantedroofingtop-thatch-{orientation}-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 3 }
+                        ],
+                        "result": "thatchframe-top-{orientation}"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-top-straw-{orientation}-1"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "thatchwork-top-straw-{orientation}-2"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingtop-thatch-{orientation}-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "horientable"
+            },
+            //tip
+            {   "name": "game:slantedroofingtip-thatch-free",
+                "stages": [
+                    {   "isframe": true,
+                        "ingredient": [
+                            { "type": "item", "code": "game:stick", "quantity": 2 }
+                        ],
+                        "result": "thatchframe-tip-east"
+                    },
+                    { 
+                        "ingredient": [
+                            { "type": "item", "code": "game:thatch", "quantity": 1 }
+                        ],
+                        "result": "artofgrowing:slantedroofingtip-thatch-free"
+                    }
+                ],
+                "replaceDrops": true,
+                "replaceGridRecipe": true,
+                "orientableBehavior": "none"
+            }
+        ],
         "dependsOn": [{"modid": "artofgrowing"}]
     }
 ]

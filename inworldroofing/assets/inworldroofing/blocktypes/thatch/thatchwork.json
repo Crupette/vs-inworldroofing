@@ -63,7 +63,7 @@
         }
     },
     "soundsByType": {
-        "*-thatch-*": {
+        "*": {
 			"place": "game:block/plant",
 			"break": "game:block/plant",
 			"hit": "game:block/plant"
