@@ -97,7 +97,11 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient ingredient = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < ingredient.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, ingredient.Quantity));
+            (world.Api as ICoreClientAPI)?
+                .TriggerIngameError(this, "notenough", 
+                    Lang.Get("ingameerror-inworldroofing-nomaterial", 
+                    slot.Itemstack.GetName().ToLower(), 
+                    slot.Itemstack.StackSize, ingredient.Quantity));
             return false;
         }
 
@@ -134,7 +138,11 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, cost.Quantity));
+            (world.Api as ICoreClientAPI)?
+                .TriggerIngameError(this, "notenough", 
+                    Lang.Get("ingameerror-inworldroofing-nomaterial", 
+                    slot.Itemstack.GetName().ToLower(), 
+                    slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
@@ -172,7 +180,11 @@ public class CollectibleBehaviorFrameMaterial : CollectibleBehavior
 
         CraftingRecipeIngredient cost = recipe.GetMatchingIngredient(slot.Itemstack);
         if(slot.Itemstack.StackSize < cost.Quantity) {
-            (world.Api as ICoreClientAPI)?.TriggerIngameError(this, "notenough", Lang.Get("ingameerror-inworldroofing-nomaterial", slot.Itemstack, slot.Itemstack.StackSize, cost.Quantity));
+            (world.Api as ICoreClientAPI)?
+                .TriggerIngameError(this, "notenough", 
+                    Lang.Get("ingameerror-inworldroofing-nomaterial", 
+                    slot.Itemstack.GetName().ToLower(), 
+                    slot.Itemstack.StackSize, cost.Quantity));
             return false;
         }
 
