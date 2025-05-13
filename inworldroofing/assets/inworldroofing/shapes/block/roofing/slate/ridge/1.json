@@ -23,7 +23,7 @@
 				{
 					"name": "log1",
 					"from": [ -2.5, -0.1, 7.6 ],
-					"to": [ 1.5, 3.9, 15.6 ],
+					"to": [ 1.5, 3.9, 23.6 ],
 					"rotationOrigin": [ -0.5, 0.0, 7.1 ],
 					"rotationY": 90.0,
 					"rotationZ": 45.0,
@@ -34,7 +34,23 @@
 						"west": { "texture": "#firewood-side", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false, "snapUv": false },
 						"up": { "texture": "#firewood-bark", "uv": [ 0.0, 8.0, 16.0, 12.0 ], "rotation": 90, "autoUv": false, "snapUv": false },
 						"down": { "texture": "#firewood-side", "uv": [ 0.0, 12.0, 16.0, 16.0 ], "rotation": 90, "autoUv": false, "snapUv": false }
-					}
+					},
+					"children": [
+						{
+							"name": "clay1",
+							"from": [ 1.1, 1.1, 4.0 ],
+							"to": [ 4.1, 4.1, 12.0 ],
+							"rotationOrigin": [ 1.1, 1.1, 4.0 ],
+							"faces": {
+								"north": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+								"east": { "texture": "#clay", "uv": [ 0.0, 0.0, 8.0, 3.0 ] },
+								"south": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+								"west": { "texture": "#clay", "uv": [ 0.0, 0.0, 8.0, 3.0 ] },
+								"up": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 8.0 ] },
+								"down": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 8.0 ] }
+							}
+						}
+					]
 				}
 			]
 		}

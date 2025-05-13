@@ -129,19 +129,6 @@ public class RoofingRecipeLoader : ModSystem
                     stageRecipes[stageBlock.Code] = (i + 1, new() { recipe });
                 }else stageRecipes[stageBlock.Code].Item2.Add(recipe);
 
-                //Remove OrientableBehavior from blocks with stage.
-                if(stageBlock.HasBlockBehavior<BlockBehaviorHorizontalOrientable>()) {
-                    BlockBehaviorHorizontalOrientable orientable = stageBlock.GetBehavior<BlockBehaviorHorizontalOrientable>();
-                    stageBlock.BlockBehaviors = stageBlock.BlockBehaviors.Remove(orientable);
-                    stageBlock.CollectibleBehaviors = stageBlock.CollectibleBehaviors.Remove(orientable);
-                }
-
-                if(stageBlock.HasBlockBehavior<BlockBehaviorNWOrientable>()) {
-                    BlockBehaviorNWOrientable orientable = stageBlock.GetBehavior<BlockBehaviorNWOrientable>();
-                    stageBlock.BlockBehaviors = stageBlock.BlockBehaviors.Remove(orientable);
-                    stageBlock.CollectibleBehaviors = stageBlock.CollectibleBehaviors.Remove(orientable);
-                }
-
                 //Add FrameMaterial behavior to ingredients part of FrameStage
                 if(stage.IsFrame) {
                     foreach(var ingred in stage.IngredientStacks) {
@@ -180,20 +167,18 @@ public class RoofingRecipeLoader : ModSystem
             int stage = stagePair.Value.Item1;
             List<RoofingRecipe> recipes = stagePair.Value.Item2;
 
-            if(stage < recipes[0].Stages.Length) {
-                int[] recipeIds = new int[recipes.Count];
-                for(int i = 0; i < recipeIds.Length; i++) recipeIds[i] = recipes[i].RecipeId;
+            int[] recipeIds = new int[recipes.Count];
+            for(int i = 0; i < recipeIds.Length; i++) recipeIds[i] = recipes[i].RecipeId;
 
-                BlockBehaviorRoofingStage stageBehavior = new(stageBlock);
-                JsonObject properties = new(new JObject());
-                properties.Token["stage"] = stage;
-                properties.Token["recipes"] = new JArray(recipeIds);
+            BlockBehaviorRoofingStage stageBehavior = new(stageBlock);
+            JsonObject properties = new(new JObject());
+            properties.Token["stage"] = stage;
+            properties.Token["recipes"] = new JArray(recipeIds);
 
-                stageBehavior.Initialize(properties);
+            stageBehavior.Initialize(properties);
 
-                stageBlock.BlockBehaviors = stageBlock.BlockBehaviors.Append(stageBehavior);
-                stageBlock.CollectibleBehaviors = stageBlock.CollectibleBehaviors.Append(stageBehavior);
-            }
+            stageBlock.BlockBehaviors = new BlockBehavior[] { stageBehavior }.Append(stageBlock.BlockBehaviors);
+            stageBlock.CollectibleBehaviors = new CollectibleBehavior[] { stageBehavior }.Append(stageBlock.CollectibleBehaviors);
 
             //If the recipe says to replace the grid recipe, disable and remove it from World.GridRecipes.
             if(recipes[0].ReplaceGridRecipe) {

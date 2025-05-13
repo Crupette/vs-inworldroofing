@@ -34,7 +34,23 @@
 						"west": { "texture": "#firewood-side", "uv": [ 0.0, 0.0, 16.0, 4.0 ], "autoUv": false, "snapUv": false },
 						"up": { "texture": "#firewood-bark", "uv": [ 0.0, 8.0, 16.0, 12.0 ], "rotation": 90, "autoUv": false, "snapUv": false },
 						"down": { "texture": "#firewood-side", "uv": [ 0.0, 12.0, 16.0, 16.0 ], "rotation": 90, "autoUv": false, "snapUv": false }
-					}
+					},
+					"children": [
+						{
+							"name": "clay1",
+							"from": [ 1.1, 1.1, 2.0 ],
+							"to": [ 4.1, 4.1, 6.0 ],
+							"rotationOrigin": [ 1.1, 1.1, 2.0 ],
+							"faces": {
+								"north": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+								"east": { "texture": "#clay", "uv": [ 0.0, 0.0, 4.0, 3.0 ] },
+								"south": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+								"west": { "texture": "#clay", "uv": [ 0.0, 0.0, 4.0, 3.0 ] },
+								"up": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 4.0 ] },
+								"down": { "texture": "#clay", "uv": [ 0.0, 0.0, 3.0, 4.0 ] }
+							}
+						}
+					]
 				}
 			]
 		}

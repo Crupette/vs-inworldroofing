@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Linq;
@@ -17,6 +18,8 @@ public class BlockBehaviorRoofingStage : BlockBehavior
     public int[] RecipeIds;
 
     public int StageId;
+
+    public bool HasRecipes => RecipeIds != null && RecipeIds.Length != 0;
 
     public BlockBehaviorRoofingStage(Block block) : base(block)
     {
@@ -38,6 +41,7 @@ public class BlockBehaviorRoofingStage : BlockBehavior
 
         ICoreAPI api = world?.Api;
         if(world == null || api == null) return false;
+        if(!HasRecipes) return false;
 
         if(!world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak)) {
             (api as ICoreClientAPI)?.TriggerIngameError(this, "claimed", Lang.Get("placefailure-claimed"));
@@ -80,14 +84,14 @@ public class BlockBehaviorRoofingStage : BlockBehavior
 
             drops.Add(firstIngredient.ResolvedItemstack);
         }
-        handling = EnumHandling.PreventDefault;
+        handling = EnumHandling.PreventSubsequent;
         return drops.ToArray();
     }
 
     public RoofingRecipeStage BestRecipeForStack(ICoreAPI api, ItemStack stack) {
-        
         foreach(var id in RecipeIds) {
             RoofingRecipe recipe = ApiAdditions.RoofingRecipes(api)[id];
+            if(recipe.Stages.Length <= StageId) continue;
             RoofingRecipeStage stage = recipe.Stages[StageId];
             if(stage.MatchesIngredient(stack)) return stage;
         }
@@ -118,7 +122,9 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         }));
     }
 
-    public RoofingRecipe[] GetRecipes(ICoreAPI api) {
+    public RoofingRecipe[] GetRecipes(ICoreAPI api) 
+    {
+        if(!HasRecipes) return Array.Empty<RoofingRecipe>();
         List<RoofingRecipe> recipes = new();
         ApiAdditions.RoofingRecipes(api).ForEach((recipe) => {
             if(RecipeIds.Contains(recipe.RecipeId)) recipes.Add(recipe);
@@ -126,9 +132,13 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         return recipes.ToArray();
     }
 
-    public RoofingRecipeStage[] GetStages(ICoreAPI api) {
+    public RoofingRecipeStage[] GetStages(ICoreAPI api) 
+    {
+        var recipes = GetRecipes(api);
+        if(recipes.Length == 0 || StageId == recipes[0].Stages.Length) return Array.Empty<RoofingRecipeStage>();
+
         List<RoofingRecipeStage> stages = new();
-        GetRecipes(api).Foreach(stage => stages.Add(stage.Stages[StageId]));
+        GetRecipes(api).Foreach(recipe => stages.Add(recipe.Stages[StageId]));
         return stages.ToArray();
     }
 }
