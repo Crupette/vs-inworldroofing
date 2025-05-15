@@ -6,7 +6,7 @@
         "Crupette"
     ],
     "description": "Replaces all the roofing block crafting recipes with in-world crafting alternatives.",
-    "version": "2.0.3",
+    "version": "2.1.0",
     "dependencies": {
         "game": ""
     }

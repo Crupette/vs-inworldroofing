@@ -1,47 +1,48 @@
 {
-    "code": "slatework",
+    "code": "woodframe",
     "variantgroups": [
-        { "code" :"shape", "loadFromProperties": "inworldroofing:roofshapes" },
-        { "code": "claytype", "states": [ "blue", "red", "fire" ] },
+        { "code": "shape", "loadFromProperties": "inworldroofing:roofshapes" },
+        { "code": "woodtype", "loadFromProperties": "game:block/wood", "states": [ "aged" ]},
         { "code": "orientation", "loadFromProperties": "game:abstract/horizontalorientation", "states": [
             "ns", "we"
         ] },
-        { "code": "stage", "states": [ "1", "2", "3" ]}
+        { "code": "stage", "states": [ "0", "1", "2" ] }
     ],
     "allowedVariants": [
-        "@slatework-(straight|bottom|cornerinner|cornerouter|halfleft|halfright|ridgeend|ridgehalfleft|ridgehalfright|top)-.*-(north|east|south|west)-1",
-        "@slatework-straight-.*-(north|east|south|west)-2",
-        "@slatework-cornerinner-.*-(north|east|south|west)-.*",
-
-        "@slatework-ridge-.*-(ns|we)-1",
-        "slatework-tip-*-east-1"
+        "@woodframe-straight-.*-(north|south|east|west)-.*",
+        "@woodframe-bottom-.*-(north|south|east|west)-(0|1)",
+        "@woodframe-cornerinner-.*-(north|south|east|west)-.*",
+        "@woodframe-cornerouter-.*-(north|south|east|west)-(0|1)",
+        "@woodframe-halfleft-.*-(north|south|east|west)-0",
+        "@woodframe-halfright-.*-(north|south|east|west)-0",
+        "@woodframe-ridge-.*-(ns|we)-(0|1)",
+        "@woodframe-ridgeend-.*-(north|south|east|west)-0",
+        "@woodframe-ridgehalfleft-.*-(north|south|east|west)-0",
+        "@woodframe-ridgehalfright-.*-(north|south|east|west)-0",
+        "@woodframe-top-.*-(north|south|east|west)-(0|1)",
+        "@woodframe-tip-.*-east-0"
     ],
 
     "shapeByType": {
-        "*-north-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 90 },
-        "*-west-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 180 },
-        "*-south-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 270 },
-        "*-east-*": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 0 },
+        "*-north-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 0 },
 
-        "*-ns": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 0 },
-        "*-we": {"base": "block/roofing/slate/{shape}/{stage}", "rotateY": 90 }
+        "*-ns-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 0 },
+        "*-we-*": {"base": "block/roofing/wood/{shape}/{stage}", "rotateY": 90 }
     },
     "textures": {
-        "firewood-bark": { "base": "game:block/wood/firewood/bark" },
-		"firewood-north": { "base": "game:block/wood/firewood/north" },
-		"firewood-side": {"base": "game:block/wood/firewood/side"},
-		"firewood-south": {"base": "game:block/wood/firewood/south"},
-        "clay": { "base": "game:block/clay/{claytype}clay"},
-        "slate": { "base": "game:block/stone/shingles/slate*"}
+        "plank": { "base": "game:block/wood/planks/{woodtype}*"},
+        "plank-side": { "base": "game:block/wood/shingles/{woodtype}-side"},
+        "plank-top": { "base": "game:block/wood/shingles/{woodtype}-top"}
     },
-    "soundsByType": {
-        "*": {
-			"place": "game:block/ceramicplace",
-			"walk": "game:walk/stone"
-		}
-    },
+    "sounds": {
+		"place": "game:block/planks",
+		"break": "game:block/planks",
+		"hit": "game:block/planks"
+	},
     "creativeinventory": { "general": [""], "decorative": [""] },
-    "resistance": 2,
 
     "collisionSelectionBoxesByType": {
 		"*-straight-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
@@ -74,8 +75,8 @@
 		"*-halfright-*-south-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
 		"*-halfright-*-east-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
 
-        "*-ridge-ns": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
-        "*-ridge-we": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+        "*-ridge-*-ns-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-*-we-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
 
         "*-ridgeend-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
 		"*-ridgeend-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
@@ -100,10 +101,11 @@
         "*-tip-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 } ]
 	},
 
-    "blockmaterial": "Ceramic",
+	"resistance": 0.15,
+
+    "blockmaterial": "Wood",
 	"lightAbsorption": 0,
 	"faceCullMode": "NeverCull",
-    "renderpass": "OpaqueNoCull",
 	"sidesolid": { "all": false },
 	"sideopaque": { "all": false }
 }
