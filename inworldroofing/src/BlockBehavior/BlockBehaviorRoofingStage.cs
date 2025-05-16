@@ -78,6 +78,8 @@ public class BlockBehaviorRoofingStage : BlockBehavior
         List<ItemStack> drops = new();
         ICoreAPI api = world.Api;
         RoofingRecipe firstRecipe = ApiAdditions.RoofingRecipes(api)[RecipeIds[0]];
+        if(!firstRecipe.ReplaceDrops) return base.GetDrops(world, pos, byPlayer, ref dropChanceMultiplier, ref handling);
+        
         for(int i = 0; i < StageId; i++) {
             RoofingRecipeStage stage = firstRecipe.Stages[i];
             CraftingRecipeIngredient firstIngredient = stage.Ingredient[0];

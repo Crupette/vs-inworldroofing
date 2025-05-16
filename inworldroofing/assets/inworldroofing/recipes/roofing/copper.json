@@ -1,0 +1,242 @@
+[
+    //Straight
+    {   "name": "game:slantedroofing-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-straight-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofing-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Bottom
+    {   "name": "game:slantedroofingbottom-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-bottom-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingbottom-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Corner inner
+    {   "name": "game:slantedroofingcornerinner-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 3 }
+                ],
+                "result": "woodframe-cornerinner-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingcornerinner-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Corner outer
+    {   "name": "game:slantedroofingcornerouter-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-cornerouter-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingcornerouter-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Half left
+    {   "name": "game:slantedroofinghalfleft-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-halfleft-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofinghalfleft-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Half right
+    {   "name": "game:slantedroofinghalfright-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-halfright-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofinghalfright-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge
+    {   "name": "game:slantedroofingridge-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 3 }
+                ],
+                "result": "woodframe-ridge-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridge-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "nworientable"
+    },
+    //Ridge end
+    {   "name": "game:slantedroofingridgeend-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-ridgeend-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgeend-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge half left
+    {   "name": "game:slantedroofingridgehalfleft-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-ridgehalfleft-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgehalfleft-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge half right
+    {   "name": "game:slantedroofingridgehalfright-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-ridgehalfright-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingridgehalfright-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Top
+    {   "name": "game:slantedroofingtop-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-top-{wood}-{orientation}-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingtop-copper-{orientation}-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Tip
+    {   "name": "game:slantedroofingtip-{wood}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-tip-{wood}-east-0"
+            },
+            { 
+                "ingredient": [
+                    { "type": "item", "code": "game:metalplate-copper", "quantity": 1 }
+                ],
+                "result": "game:slantedroofingtip-copper-free"
+            }
+        ],
+        "replaceDrops": false,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "none"
+    }
+]

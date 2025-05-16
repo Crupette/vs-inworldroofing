@@ -1,0 +1,314 @@
+[
+    //Straight
+    {   "name": "game:slantedroofing-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-straight-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-straight-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-straight-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Bottom
+    {   "name": "game:slantedroofingbottom-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-bottom-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-bottom-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-bottom-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Corner inner
+    {   "name": "game:slantedroofingcornerinner-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 3 }
+                ],
+                "result": "woodframe-cornerinner-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-cornerinner-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-cornerinner-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Corner outer
+    {   "name": "game:slantedroofingcornerouter-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-cornerouter-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-cornerouter-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-cornerouter-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Half left
+    {   "name": "game:slantedroofinghalfleft-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-halfleft-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-halfleft-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-halfleft-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Half right
+    {   "name": "game:slantedroofinghalfright-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-halfright-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-halfright-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-halfright-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge
+    {   "name": "game:slantedroofingridge-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 3 }
+                ],
+                "result": "woodframe-ridge-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridge-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridge-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "nworientable"
+    },
+    //Ridge end
+    {   "name": "game:slantedroofingridgeend-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-ridgeend-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgeend-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgeend-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge half left
+    {   "name": "game:slantedroofingridgehalfleft-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-ridgehalfleft-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgehalfleft-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgehalfleft-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Ridge half right
+    {   "name": "game:slantedroofingridgehalfright-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 1 }
+                ],
+                "result": "woodframe-ridgehalfright-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgehalfright-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-ridgehalfright-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Top
+    {   "name": "game:slantedroofingtop-{wood}-{orientation}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-top-{wood}-{orientation}-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-top-{wood}-{orientation}-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-top-{wood}-{orientation}-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "horientable"
+    },
+    //Tip
+    {   "name": "game:slantedroofingtip-{wood}-free",
+        "stages": [
+            {   "isframe": true,
+                "ingredient": [
+                    { "type": "item", "code": "game:plank-*", "name": "wood", "quantity": 2 }
+                ],
+                "result": "woodframe-tip-{wood}-east-0"
+            },
+            {
+                "ingredient": [
+                    { "type": "block", "code": "game:soil-medium-none", "quantity": 1 }
+                ],
+                "result": "sodroofing-tip-{wood}-east-1"
+            },
+            {
+                "ingredient": [
+                    { "type": "item", "code": "game:drygrass", "quantity": 1 }
+                ],
+                "result": "sodroofing-tip-{wood}-east-2"
+            }
+        ],
+        "replaceDrops": true,
+        "replaceGridRecipe": true,
+        "orientableBehavior": "none"
+    }
+]

@@ -1,0 +1,124 @@
+{
+    "code": "sodroofing",
+    "variantgroups": [
+        { "code": "shape", "loadFromProperties": "inworldroofing:roofshapes" },
+        { "code": "woodtype", "loadFromProperties": "game:block/wood", "states": [ "aged" ]},
+        { "code": "orientation", "loadFromProperties": "game:abstract/horizontalorientation", "states": [
+            "ns", "we"
+        ] },
+        { "code": "stage", "states": [ "1", "2" ] }
+    ],
+    "allowedVariants": [
+        "@sodroofing-straight-.*-(north|south|east|west)-.*",
+        "@sodroofing-bottom-.*-(north|south|east|west)-.*",
+        "@sodroofing-cornerinner-.*-(north|south|east|west)-.*",
+        "@sodroofing-cornerouter-.*-(north|south|east|west)-.*",
+        "@sodroofing-halfleft-.*-(north|south|east|west)-.*",
+        "@sodroofing-halfright-.*-(north|south|east|west)-.*",
+        "@sodroofing-ridge-.*-(ns|we)-.*",
+        "@sodroofing-ridgeend-.*-(north|south|east|west)-.*",
+        "@sodroofing-ridgehalfleft-.*-(north|south|east|west)-.*",
+        "@sodroofing-ridgehalfright-.*-(north|south|east|west)-.*",
+        "@sodroofing-top-.*-(north|south|east|west)-.*",
+        "@sodroofing-tip-.*-east-.*"
+    ],
+
+    "shapeByType": {
+        "*-north-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 90 },
+        "*-west-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 180 },
+        "*-south-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 270 },
+        "*-east-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 0 },
+
+        "*-ns-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 0 },
+        "*-we-*": {"base": "block/roofing/sod/{shape}/{stage}", "rotateY": 90 }
+    },
+    "textures": {
+        "planks": { "base": "game:block/wood/planks/{woodtype}*"},
+        "planks-side": { "base": "game:block/wood/shingles/{woodtype}-side"},
+        "planks-top": { "base": "game:block/wood/shingles/{woodtype}-top"},
+        "soil": { "base": "game:block/soil/fertmedium"},
+        "grasscoverage": { "base": "game:block/plant/grasscoverage/normal"},
+        "grass-north": {"base": "game:block/plant/tallgrass/free/short-north" },
+		"grass-south": { "base": "game:block/plant/tallgrass/free/short-south" }
+    },
+    "soundsByType": {
+        "*-1": {
+		    "place": "game:block/dirt*",
+		    "break": "game:block/planks",
+		    "hit": "game:block/planks"
+        },
+        "*-2": {
+		    "place": "game:block/plant",
+		    "break": "game:block/planks",
+		    "hit": "game:block/planks"
+        }
+	},
+    "faceCullMode": "NeverCull",
+	"renderpass": "OpaqueNoCull",
+    "creativeinventory": { "general": [""], "decorative": [""] },
+
+    "collisionSelectionBoxesByType": {
+		"*-straight-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-straight-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-straight-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-straight-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-bottom-*-north-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 90 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 90 }],
+		"*-bottom-*-west-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 180 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 180 }],
+		"*-bottom-*-south-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1, rotateY: 270 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1, rotateY: 270 }],
+		"*-bottom-*-east-*": [ { x1: 0.4, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 }, { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3, z2: 1 }],
+
+        "*-cornerinner-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 90 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerinner-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 180 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerinner-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1, rotateY: 270 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerinner-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 1 }, { x1: 0, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-cornerouter-*-north-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-cornerouter-*-west-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-cornerouter-*-south-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-cornerouter-*-east-*": [ { x1: 0.1875, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.625, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-halfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 90 } ],
+		"*-halfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 180 } ],
+		"*-halfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5, rotateY: 270 } ],
+		"*-halfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 0.5 }, { x1: 0.625, y1: 0.5625, z1: 0, x2: 1, y2: 1, z2: 0.5 } ],
+
+        "*-halfright-*-north-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 90 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 90 } ],
+		"*-halfright-*-west-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 180 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 180 } ],
+		"*-halfright-*-south-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1, rotateY: 270 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1, rotateY: 270 } ],
+		"*-halfright-*-east-*": [ { x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5625, z2: 1 }, { x1: 0.625, y1: 0.5625, z1: 0.5, x2: 1, y2: 1, z2: 1 } ],
+
+        "*-ridge-*-ns-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 } ],
+        "*-ridge-*-we-*": [{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90}, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 , rotateY: 90} ],
+
+        "*-ridgeend-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 90 }],
+		"*-ridgeend-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 180 }],
+		"*-ridgeend-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5, rotateY: 270 }],
+		"*-ridgeend-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 0.5, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 0.5 }],
+
+        "*-ridgehalfleft-*-north-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfleft-*-west-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfleft-*-south-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfleft-*-east-*": [ { x1: 0, y1: 0, z1: 0, x2: 0.5, y2: 0.375, z2: 1, }, { x1: 0.25, y1: 0.375, z1: 0, x2: 0.5, y2: 0.5625, z2: 1 }],
+
+        "*-ridgehalfright-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 90 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 90 }],
+		"*-ridgehalfright-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 180 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 180 }],
+		"*-ridgehalfright-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, rotateY: 270 }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1, rotateY: 270 }],
+		"*-ridgehalfright-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1, }, { x1: 0.5, y1: 0.375, z1: 0, x2: 0.75, y2: 0.5625, z2: 1 }],
+
+        "*-top-*-north-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 90 }],
+		"*-top-*-west-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 180 }],
+		"*-top-*-south-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, rotateY: 270 }],
+		"*-top-*-east-*": [ { x1: 0.5, y1: 0, z1: 0, x2: 1, y2: 0.8, z2: 1, }],
+
+        "*-tip-*": [ { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5625, z2: 1 } ]
+	},
+
+	"resistance": 2,
+
+    "blockmaterial": "Wood",
+	"lightAbsorption": 0,
+	"faceCullMode": "NeverCull",
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false }
+}
